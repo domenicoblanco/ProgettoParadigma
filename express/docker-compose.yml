@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  web:
+    build: .
+    command: node .
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+    
+volumes:
+  mongodb_data_container:
