@@ -16,10 +16,6 @@
     margin: 15px 0;
 }
 
-.box-content {
-    --ion-background-color: lightgray;
-}
-
 .container{
     width: 100%; 
     margin-top: 15px;
@@ -38,6 +34,12 @@
         border-radius: 8px;
     }
 }
+
+@media (prefers-color-scheme: light) {
+    .box-content {
+        --ion-background-color: lightgray;
+    }
+} 
 
 .box-item {
     --ion-background-color: white;
