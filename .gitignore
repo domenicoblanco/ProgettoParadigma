@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+yarn.lock
+ionic/node_modules/
+angular/node_modules/
+express/node_modules/

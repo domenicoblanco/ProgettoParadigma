@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class='title'>Signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollY]="false">
+
+  <div class="form__container">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input (keyup.enter)="gotoNextField(Field2)" type="text" [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Surname</ion-label>
+      <ion-input #Field2 (keyup.enter)="gotoNextField(Field3)" type="text" [(ngModel)]="user.surname"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input #Field3 (keyup.enter)="gotoNextField(Field4)" type="email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input #Field4 (keyup.enter)="signup()" minlength="5" type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+  
+    <ion-button [disabled]="isDataInvalid()" fill="solid" (click)="signup()">Confirm</ion-button>
+  </div>
+
+</ion-content>
+

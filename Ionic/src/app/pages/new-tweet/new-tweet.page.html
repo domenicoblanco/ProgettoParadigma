@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class='title'>{{ isStory ? 'New-story' : 'New-tweet' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark">
+        <ion-icon style='position: absolute' slot="icon-only" name="attach"></ion-icon> 
+        <input style='opacity: 0' type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg" /> 
+      </ion-button>
+      <ion-button color="dark" (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollY]="true">
+
+  <ion-item class='text-item'>
+
+    <ion-label position="floating">{{ editMode ? 'Edit' : 'Write' }} your message</ion-label>
+
+    <ion-textarea *ngIf="editMode; else newMode" [(ngModel)]="tweetToEdit.tweet"></ion-textarea>
+    <ng-template #newMode>
+      <ion-textarea minlength="1" maxlength="120" [(ngModel)]="newTweet.tweet"></ion-textarea>
+    </ng-template>
+  </ion-item>
+  <div *ngIf='newTweet.image' class='box-image'>
+    <ion-img src="{{ newTweet.image }}"></ion-img>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons class='button-tweet'>
+      <ion-button color='primary' fill='solid' [disabled]="isDataInvalid()" (click)="createOrEditTweet()">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

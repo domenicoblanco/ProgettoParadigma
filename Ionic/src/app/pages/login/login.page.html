@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class='title'>Progetto Paradigma</ion-title>  <!-- Cambiare titolo (mettere il nome che si vuole dare al progetto) -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollY]="false">
+
+  <div class="form__container">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input (keyup.enter)="gotoNextField(Field)" type="email" [(ngModel)]="loginUser.email"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input #Field (keyup.enter)="login()" minlength="5" type="password" [(ngModel)]="loginUser.password"></ion-input>
+    </ion-item>
+  
+    <ion-row>
+      <ion-col>
+        <ion-button [disabled]="isDataInvalid()" fill="solid" (click)="login()">Login</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button fill="solid" (click)="goToSignup()">Create account</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>

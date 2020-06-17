@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class='title'>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollY]="false">
+
+  <div class="avatar__container">
+    <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg" /> 
+    <img class="profile-img" [src]='this.me.image? this.me.image : "./assets/users/me.png"'>
+  </div>
+
+  <ion-item>
+    <ion-label position="stacked">Name</ion-label>
+    <ion-input [(ngModel)]="me.name" [readonly]="readOnly"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Surname</ion-label>
+    <ion-input [(ngModel)]="me.surname" [readonly]="readOnly"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input type="email" [(ngModel)]="me.email" [readonly]="readOnly"></ion-input>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" fill="solid" color="secondary" (click)="editAndSave()">
+          <ion-icon [name]="readOnly ? 'create' : 'checkmark'"></ion-icon> 
+          {{ readOnly ? 'Edit' : 'Save' }} profile
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" fill="solid" color="danger" (click)="deleteMe()">
+          <ion-icon name="close-circle"></ion-icon> 
+          Delete profile
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons class="button-logout">
+      <ion-button fill='solid' color="primary" (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

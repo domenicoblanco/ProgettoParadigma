@@ -1,0 +1,16 @@
+.button-tweet {
+    display: flex;
+    justify-content: center;
+    ion-button {
+        --border-radius: 8px;
+        width: 200px;
+    }
+}
+
+.text-item {
+    font-size: 22px;
+}
+
+.box-image {
+    margin-top: 10px;
+}
