@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class='title'>{{ username }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark" (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollY]="false">
+
+  <ion-item *ngIf='isStory' class='text-item'>
+    <h2>{{story.tweet}}</h2>
+  </ion-item>
+  <div *ngIf='!isStory || (isStory && story.image)' class='box-image'>
+    <ion-img *ngIf='isStory; else userProfile' class='fit-parent' [src]="story.image"></ion-img>
+    <ng-template #userProfile>
+      <ion-img class='fit-parent' [src]="user.image"></ion-img>
+    </ng-template>
+  </div>
+</ion-content>
