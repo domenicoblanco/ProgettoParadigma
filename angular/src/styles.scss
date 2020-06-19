@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.error {
+    background-color: #eb445a;
+    border-color: #eb445a;
+    color: white;
+    .mat-simple-snackbar-action {
+        display: none;
+    }
+}
+
+.success {
+    background-color: #2dd36f;
+    border-color: #2dd36f;
+    color: white;
+    .mat-simple-snackbar-action {
+        display: none;
+    }
+}
+
+.warning {
+    background-color: #ffc409;
+    border-color: #ffc409;
+    color: white;
+    .mat-simple-snackbar-action {
+        display: none;
+    }
+}
+
+.general, .inapp {
+    background-color: #3880ff;
+    border-color: #3880ff;
+    color: white;
+    .mat-simple-snackbar-action {
+        display: none;
+    }
+}

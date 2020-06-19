@@ -1,0 +1,67 @@
+<mat-toolbar>
+    <mat-toolbar>
+        <div class='box-header'>
+        <mat-toolbar class='title'>Tweets</mat-toolbar>
+        <div (click)="createStory()">
+            <mat-icon color='primary' size='large' >add_circle</mat-icon> 
+        </div>
+        <div class='stories-list'>
+            <mat-list-item *ngFor="let tweet of tweets"> 
+            <mat-list-item lines='none' *ngIf='tweet.isStory'>  
+                <mat-card-header (click)='showStory(tweet)'> 
+                <img mat-card-image class='story-image' [src]='getUser(tweet._author._id).image'>
+                </mat-card-header>
+            </mat-list-item>    
+            </mat-list-item>
+        </div>
+        </div>
+    </mat-toolbar>
+</mat-toolbar>
+  
+<mat-card class='box-content'>
+
+    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+
+    <div class='container'>
+        <mat-list-item class='list-post' *ngFor="let tweet of tweets">
+            <mat-list-item lines='none' class='box-item' *ngIf='!tweet.isStory'>
+            <mat-label>  
+                <div class='item-header'>
+                <mat-card-header (click)='showStory(getUser(tweet._author._id))'>
+                    <img mat-card-image class='profile-image' [src]='getUser(tweet._author._id).image'>
+                </mat-card-header>
+                <div style='margin: 0 10px'>
+                    <p class="user" [class.me]="canEdit(tweet)">
+                    {{ getAuthor(tweet) }} 
+                    <mat-icon *ngIf="canEdit(tweet)" color="danger-tint">person</mat-icon> 
+                    </p>
+
+                    <mat-label>{{ tweet.createdAt }}</mat-label>  
+                </div>
+                <div class='editOrDeletePost'>
+                    <mat-toolbar *ngIf='canEdit(tweet)'>
+                    <button mat-button color="secondary" (click)="createOrEditTweet(tweet)">
+                        <mat-icon slot="icon-only">create</mat-icon>
+                    </button>
+                    <button mat-button color="danger" (click)="deleteTweet(tweet)">
+                        <mat-icon slot="icon-only">cancel</mat-icon>  
+                    </button>
+                    </mat-toolbar>
+                </div>
+                </div>
+                <h2 class='spacewrap'>{{tweet.tweet}}</h2>
+                <div *ngIf='tweet.image' class='box-image'>
+                <img mat-card-image [src]="tweet.image">
+                </div>
+            </mat-label> 
+            </mat-list-item>
+        </mat-list-item>
+    </div>
+    <button mat-fab vertical="bottom" horizontal="end" slot="fixed"> 
+        <button mat-fab (click)="createOrEditTweet()">
+            <mat-icon>add_circle</mat-icon>  
+        </button>
+    </button>
+
+</mat-card>
+  

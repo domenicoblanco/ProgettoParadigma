@@ -7,8 +7,10 @@
 <ion-content [scrollY]="false">
 
   <div class="avatar__container">
-    <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg" /> 
-    <img class="profile-img" [src]='this.me.image? this.me.image : "./assets/users/me.png"'>
+    <ion-avatar class='box-image'>
+      <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg" /> 
+      <img class="profile-img" [src]='this.me.image? this.me.image : "./assets/users/me.png"'>
+    </ion-avatar>
   </div>
 
   <ion-item>
@@ -46,7 +48,7 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons class="button-logout">
-      <ion-button fill='solid' color="primary" (click)="logout()">Logout</ion-button>
+      <ion-button fill='solid' color="tertiary" (click)="logout()">Logout</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>

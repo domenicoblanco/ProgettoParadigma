@@ -16,6 +16,12 @@ import { UnictDatePipe } from 'src/app/pipes/unict-date.pipe';
     IonicModule,
     TweetsPageRoutingModule
   ],
-  declarations: [TweetsPage, UnictDatePipe]
+  exports: [
+    TweetsPage,
+  ],
+  declarations: [TweetsPage, UnictDatePipe],
+  entryComponents: [
+    TweetsPage
+  ]
 })
 export class TweetsPageModule {}

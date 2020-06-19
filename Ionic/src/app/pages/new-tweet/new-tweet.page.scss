@@ -12,5 +12,20 @@
 }
 
 .box-image {
-    margin-top: 10px;
+    height: -webkit-fill-available;
+    margin-bottom: 6.5rem;
+}
+
+.fit-parent {
+    max-width: 100%;
+    height: -webkit-fill-available;
+    object-fit: contain;
+}
+
+.mywarning {
+    --highlight-background: var(--ion-color-warning)
+}
+
+.myerror{
+    --highlight-background: var(--ion-color-danger)
 }

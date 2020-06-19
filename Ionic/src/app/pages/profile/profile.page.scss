@@ -5,13 +5,18 @@
     align-items: center;
     justify-content: center;
     background-color: var(--ion-color-light);
-    margin-bottom: 25px;
+    
     .profile-img {
         width: 160px;
         height: 160px;
         border-radius: 50%;
-        position: absolute;
-        z-index: 0
+        z-index: 0;
+        margin-top: -160px;
+        margin-bottom: 25px;
+    }
+    .box-image {
+        width: 160px;
+        height: 160px;
     }
 }
 
@@ -19,6 +24,7 @@
     opacity: 0;
     z-index: 1; 
     height: 160px;
+    width: 160px;
 }
 
 .button-logout {

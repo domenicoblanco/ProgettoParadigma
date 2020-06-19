@@ -21,23 +21,28 @@
     margin-top: 15px;
 }
 
-@media only screen and (min-width: 768px) {
-    .container { 
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-    }
-    .list-post {
-        width: 450px;
-    }
-    .box-item {
-        border-radius: 8px;
-    }
+.box-item, .list-post {
+    border-radius: 8px;
+} 
+
+.spacewrap {
+    white-space: break-spaces;
+}
+
+.story-image {
+    width: 35px;
+    height: 35px;
 }
 
 @media (prefers-color-scheme: light) {
     .box-content {
         --ion-background-color: lightgray;
+    }
+} 
+
+@media (prefers-color-scheme: dark) {
+    .list-post {
+        margin: 8px 0;
     }
 } 
 

@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <mat-toolbar>
+    <mat-toolbar class='title'>{{ username }}</mat-toolbar>
+    <mat-toolbar slot="end">
+      <button mat-button color="dark" (click)="dismiss()">
+        <mat-icon slot="icon-only">close</mat-icon>
+      </button>
+    </mat-toolbar>
+  </mat-toolbar>
+</mat-toolbar>
+  
+<mat-card>
+
+  <mat-list-item *ngIf='isStory' class='text-item'>
+    <h2>{{story.tweet}}</h2>
+  </mat-list-item>
+  <div *ngIf='!isStory || (isStory && story.image)' class='box-image'>
+    <img mat-card-image *ngIf='isStory; else userProfile' class='fit-parent' [src]="story.image">
+    <ng-template #userProfile>
+      <img mat-card-image class='fit-parent' [src]="user.image">
+    </ng-template>
+  </div>
+</mat-card>
+  

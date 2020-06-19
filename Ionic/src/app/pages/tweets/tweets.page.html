@@ -8,9 +8,9 @@
       <div class='stories-list'>
         <ion-list *ngFor="let tweet of tweets"> 
           <ion-item lines='none' *ngIf='tweet.isStory'>  
-            <ion-label (click)='showStory()'> 
-              <ion-img style='width: 35px; height: 35px' class='profile-image' [src]='getUser(tweet._author._id).image'></ion-img>
-            </ion-label>
+            <ion-avatar (click)='showStory(tweet)'> 
+              <ion-img class='story-image' [src]='getUser(tweet._author._id).image'></ion-img>
+            </ion-avatar>
           </ion-item>    
         </ion-list>
       </div>
@@ -21,10 +21,10 @@
 <ion-content class='box-content'>
   <div class='container'>
     <ion-list class='list-post' *ngFor="let tweet of tweets">
-        <ion-item class='box-item' *ngIf='!tweet.isStory'>
+        <ion-item lines='none' class='box-item' *ngIf='!tweet.isStory'>
           <ion-label>  
             <div class='item-header'>
-              <ion-avatar>
+              <ion-avatar (click)='showStory(getUser(tweet._author._id))'>
                 <ion-img class='profile-image' [src]='getUser(tweet._author._id).image'></ion-img>
               </ion-avatar>
               <div style='margin: 0 10px'>
@@ -46,7 +46,7 @@
                 </ion-buttons>
               </div>
             </div>
-            <h2>{{tweet.tweet}}</h2>
+            <h2 class='spacewrap'>{{tweet.tweet}}</h2>
             <div *ngIf='tweet.image' class='box-image'>
               <ion-img [src]="tweet.image"></ion-img>
             </div>

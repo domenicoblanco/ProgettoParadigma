@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tweet } from 'src/app/interfaces/tweet';
+import { User } from 'src/app/interfaces/user';
 import { TweetsService } from 'src/app/services/tweets/tweets.service';
 import { ModalController } from '@ionic/angular';
 import { NewTweetPage } from '../new-tweet/new-tweet.page';
@@ -8,6 +9,7 @@ import { UniLoaderService } from 'src/app/shared/uniLoader.service';
 import { ToastService } from 'src/app/shared/toast.service';
 import { ToastTypes } from 'src/app/enums/toast-types.enum';
 import { UsersPage } from 'src/app/pages/users/users.page';
+import { ModalContentPage } from '../modal-content/modal-content.page';
 
 @Component({
   selector: 'app-tweets',
@@ -24,7 +26,7 @@ export class TweetsPage implements OnInit {
     private auth: AuthService,
     private uniLoader: UniLoaderService,
     private toastService: ToastService,
-    private user: UsersPage
+    private user: UsersPage,
   ) { }
 
   ngOnInit() {}
@@ -40,11 +42,11 @@ export class TweetsPage implements OnInit {
     }
   }
 
-  async createStory() {
+  async showModal(component, prop: boolean | Tweet | User, refresh = false) {
     const modal = await this.modalCtrl.create({
-      component: NewTweetPage,
+      component: component,
       componentProps: {
-        isStory: true
+        props: prop
       } 
     });
 
@@ -52,7 +54,7 @@ export class TweetsPage implements OnInit {
     .then(async () => {
 
       // Aggiorno la mia lista di tweet, per importare le ultime modifiche apportate dall'utente
-      await this.getTweets();
+      if(refresh) await this.getTweets();
 
       // La chiamata è andata a buon fine, dunque rimuovo il loader
       await this.uniLoader.dismiss();
@@ -63,8 +65,12 @@ export class TweetsPage implements OnInit {
     return await modal.present();
   }
 
-  showStory() {
-    console.log("click");
+  async showStory(tweet: Tweet) {
+    await this.showModal(ModalContentPage, tweet);
+  }
+
+  async createStory() {
+    await this.showModal(NewTweetPage, true, true);
   }
 
   async getTweets() {

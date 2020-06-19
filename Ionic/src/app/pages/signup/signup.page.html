@@ -30,7 +30,7 @@
       <ion-input #Field4 (keyup.enter)="signup()" minlength="5" type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
   
-    <ion-button [disabled]="isDataInvalid()" fill="solid" (click)="signup()">Confirm</ion-button>
+    <ion-button [disabled]="isDataInvalid()" color='success' fill="solid" (click)="signup()">Confirm</ion-button>
   </div>
 
 </ion-content>

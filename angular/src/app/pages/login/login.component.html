@@ -1,0 +1,32 @@
+<mat-toolbar>
+    <mat-toolbar>
+      <mat-toolbar class='title'>Progetto Paradigma</mat-toolbar>  <!-- Cambiare titolo (mettere il nome che si vuole dare al progetto) -->
+    </mat-toolbar>
+</mat-toolbar>
+  
+<mat-card>
+
+  <div class="form__container">
+
+    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+
+    <mat-list-item>
+      <mat-label position="floating">Email</mat-label>
+      <input matInput (keyup.enter)="gotoNextField(Field)" type="email" ngModel="loginUser.email">
+    </mat-list-item>
+  
+    <mat-list-item>
+      <mat-label position="floating">Password</mat-label>
+      <input matInput #Field (keyup.enter)="login()" minlength="5" type="password" ngModel="loginUser.password">
+    </mat-list-item>
+  
+    <mat-list-item>
+      <button mat-button [disabled]="isDataInvalid()" color='tertiary' fill="solid" (click)="login()">Login</button>
+    </mat-list-item>
+    <mat-list-item>
+      <button mat-button fill="solid" color='tertiary' (click)="goToSignup()">Create account</button>
+    </mat-list-item>
+    </div>
+
+</mat-card>
+  

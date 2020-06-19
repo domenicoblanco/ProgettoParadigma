@@ -16,6 +16,7 @@ import { UniLoaderService } from './shared/uniLoader.service';
 import { UniAlertService } from './shared/uniAlert.service';
 import { ToastService } from './shared/toast.service';
 import { UsersPage } from 'src/app/pages/users/users.page';
+import { ModalContentPage } from 'src/app/pages/modal-content/modal-content.page';
 
 @NgModule({
   declarations: [AppComponent, UnictDatePipe],
@@ -34,6 +35,7 @@ import { UsersPage } from 'src/app/pages/users/users.page';
     UniAlertService,
     ToastService,
     UsersPage,
+    ModalContentPage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

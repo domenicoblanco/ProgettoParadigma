@@ -1,0 +1,43 @@
+<mat-toolbar role='heading'>
+  <mat-toolbar>
+    <div class='back-button'>
+      <button mat-button>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    <mat-toolbar class='title'>Signup</mat-toolbar>
+  </mat-toolbar>
+</mat-toolbar>
+  
+<mat-card>
+
+  <div class="form__container">
+
+    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+
+    <mat-list-item>
+      <mat-label position="floating">Name</mat-label>
+      <input matInput (keyup.enter)="gotoNextField(Field2)" type="text" ngModel="user.name" />
+    </mat-list-item>
+  
+    <mat-list-item>
+      <mat-label position="floating">Surname</mat-label>
+      <input matInput #Field2 (keyup.enter)="gotoNextField(Field3)" type="text" ngModel="user.surname" />
+    </mat-list-item>
+  
+    <mat-list-item>
+      <mat-label position="floating">Email</mat-label>
+      <input matInput #Field3 (keyup.enter)="gotoNextField(Field4)" type="email" ngModel="user.email" />
+    </mat-list-item>
+  
+    <mat-list-item>
+      <mat-label position="floating">Password</mat-label>
+      <input matInput #Field4 (keyup.enter)="signup()" minlength="5" type="password" ngModel="user.password" />
+    </mat-list-item>
+  
+    <button mat-button [disabled]="isDataInvalid()" color='success' fill="solid" (click)="signup()">Confirm</button>
+  </div>
+
+</mat-card>
+  
+  
