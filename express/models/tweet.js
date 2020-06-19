@@ -17,7 +17,7 @@ var storySchema = mongoose.Schema({
     image: {type: String, default: ''},
     isStory: {type: Boolean, default: true}
 }, {timestamps: true});
-storySchema.index({createdAt: 1},{expireAfterSeconds: 30});
+storySchema.index({createdAt: 1},{expireAfterSeconds: 120});
 
 const Story = mongoose.model('Story', storySchema);
 

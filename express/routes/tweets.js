@@ -58,46 +58,49 @@ router.post('/',autenticationMiddleware.isAuth, [
 router.put('/:id', autenticationMiddleware.isAuth, [
   check('tweet').isString().isLength({min: 1, max: 280})
 ], checkValidation, function(req, res, next) {
-  Tweet.findOne({_id: req.params.id}).exec(function(err, tweet) {
-    if (!err && tweet) {
-      if (tweet._author.toString() !== res.locals.authInfo.userId) {
+  if(req.body.isStory)
+    
+    Story.findOne({_id: req.params.id}).exec(function(err, story) {
+      if (err) {
+        return res.status(500).json({
+          error: err,
+          message: "Error reading the tweet"
+        });
+      }
+      if (!story) {
+        return res.status(404).json({
+          message: "Tweet not found"
+        })
+      }
+      if (story._author.toString() !== res.locals.authInfo.userId) {
         return res.status(401).json({
           error: "Unauthorized",
           message: "You are not the owner of the resource"
         });
       }
-      tweet.tweet = req.body.tweet;
-      tweet.save(function(err) {
-        if(err) return res.status(500).json({error: err});
-        return res.status(200).json(tweet);
+      story.tweet = req.body.tweet;
+      story.save(function(err) {
+        if(err)  return res.status(500).json({error: err});
       });
-    }
-  });
-
-  Story.findOne({_id: req.params.id}).exec(function(err, story) {
-    if (err) {
-      return res.status(500).json({
-        error: err,
-        message: "Error reading the tweet"
-      });
-    }
-    if (!story) {
-      return res.status(404).json({
-        message: "Tweet not found"
-      })
-    }
-    if (story._author.toString() !== res.locals.authInfo.userId) {
-      return res.status(401).json({
-        error: "Unauthorized",
-        message: "You are not the owner of the resource"
-      });
-    }
-    story.tweet = req.body.tweet;
-    story.save(function(err) {
-      if(err) return res.status(500).json({error: err});
-      return res.status(200).json(story);
+      return res.status(201).json(story);
     });
-  });
+  else
+    Tweet.findOne({_id: req.params.id}).exec(function(err, tweet) {
+      if (!err && tweet) {
+        if (tweet._author.toString() !== res.locals.authInfo.userId) {
+          return res.status(401).json({
+            error: "Unauthorized",
+            message: "You are not the owner of the resource"
+          });
+        }
+        tweet.tweet = req.body.tweet;
+        tweet.save(function(err) {
+          if(err) 
+            return res.status(500).json({error: err});
+        });
+        return res.status(201).json(tweet);
+      }
+    });
 });
 
 router.delete('/:id', autenticationMiddleware.isAuth, function(req, res, next) {
