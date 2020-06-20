@@ -1,15 +1,23 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-        (closed)="events.push('close!')">
-      Sidenav content
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
+      <img mat-image-avatar [src]="user.image">
+      <mat-list class="center">
+        <mat-list-item>
+          <a [routerLink]="['/tweets']">Tweets</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a [routerLink]="['/users']">Users</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a [routerLink]="['/profile']">Profile</a>
+        </mat-list-item>
+      </mat-list>
     </mat-sidenav>
-  
+    
     <mat-sidenav-content>
-      <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
-      <p>Events:</p>
-      <div class="sidenav-events">
-        <div *ngFor="let e of events">{{e}}</div>
-      </div>
+      <button mat-fab color="accent" (click)="sidenav.toggle()">
+        <mat-icon>menu_open</mat-icon>
+      </button>
     </mat-sidenav-content>
 </mat-sidenav-container>
   

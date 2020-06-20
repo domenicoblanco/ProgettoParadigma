@@ -1,48 +1,55 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { SidenavComponent } from './pages/sidenav/sidenav.component';
 import { LoginPage } from './pages/login/login.component';
+import { NewTweetPage } from './pages/new-tweet/new-tweet.component';
+import { ProfilePage } from './pages/profile/profile.component';
+import { SignupPage } from './pages/signup/signup.component';
+import { UsersPage } from './pages/users/users.component';
+import { ModalContentPage } from './pages/modal-content/modal-content.component';
+import { TweetsPage } from './pages/tweets/tweets.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/sidenav/sidenav.module').then(m => m.SidenavModule),
+    component: TweetsPage,
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+    component: LoginPage
   },
   {
     path: 'new-tweet',
-    loadChildren: () => import('./pages/new-tweet/new-tweet.module').then( m => m.NewTweetPageModule),
+    component: NewTweetPage,
   },
   {
     path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+    component: ProfilePage
   },
   {
     path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+    component: SignupPage
   },
   {
     path: 'tabs',
-    loadChildren: () => import('./pages/sidenav/sidenav.module').then( m => m.SidenavModule)
+    component: SidenavComponent
   },
   {
     path: 'tweets',
-    loadChildren: () => import('./pages/tweets/tweets.module').then( m => m.TweetsPageModule)
+    component: TweetsPage
   },
   {
     path: 'users',
-    loadChildren: () => import('./pages/users/users.module').then( m => m.UsersPageModule)
+    component: UsersPage
   },
   {
     path: 'modal-content',
-    loadChildren: () => import('./pages/modal-content/modal-content.module').then( m => m.ModalContentPageModule)
+    component: ModalContentPage
   }
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
 })

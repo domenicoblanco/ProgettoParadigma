@@ -21,11 +21,11 @@
 
     <mat-label position="floating">{{ editMode ? 'Edit' : 'Write' }} your message</mat-label>
     <mat-label id='character-counter' position="floating">0/280</mat-label>
-    <mat-form-field *ngIf="editMode; else newMode" ngModel="tweetToEdit.tweet">
+    <mat-form-field *ngIf="editMode; else newMode" [(ngModel)]="tweetToEdit.tweet">
       <textarea matInput></textarea>
     </mat-form-field>
     <ng-template #newMode>
-      <mat-form-field (ionChange)='countCharacter()' minlength="1" maxlength="280" ngModel="newTweet.tweet"></mat-form-field>
+      <mat-form-field (ionChange)='countCharacter()' minlength="1" maxlength="280" [(ngModel)]="newTweet.tweet"></mat-form-field>
     </ng-template>
   </mat-list-item>
   <div *ngIf='newTweet.image' class='box-image'>

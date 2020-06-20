@@ -43,7 +43,7 @@ export class LoginPage {
       await this.auth.login(this.loginUser);
 
       // Se la chiamata è andata buon fine, porto l'utente sulla schermata Tabs
-      await this.route.navigateByUrl('/tabs');
+      await this.route.navigateByUrl('/');
 
     } catch (err) {
 

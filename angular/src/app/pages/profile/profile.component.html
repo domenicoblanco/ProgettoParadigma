@@ -1,3 +1,4 @@
+<app-sidenav></app-sidenav>
 <mat-toolbar role='heading'>
   <mat-toolbar>
     <mat-toolbar class='title'>Profile</mat-toolbar>
@@ -27,15 +28,15 @@
 
   <mat-list-item>
     <mat-label position="stacked">Name</mat-label>
-    <input matInput ngModel="me.name" [readonly]="readOnly">
+    <input matInput [(ngModel)]="me.name" [readonly]="readOnly">
   </mat-list-item>
   <mat-list-item>
     <mat-label position="stacked">Surname</mat-label>
-    <input matInput ngModel="me.surname" [readonly]="readOnly">
+    <input matInput [(ngModel)]="me.surname" [readonly]="readOnly">
   </mat-list-item>
   <mat-list-item>
     <mat-label position="stacked">Email</mat-label>
-    <input matInput type="email" ngModel="me.email" [readonly]="readOnly">
+    <input matInput type="email" [(ngModel)]="me.email" [readonly]="readOnly">
   </mat-list-item>
 
   <mat-grid-list cols='2'>

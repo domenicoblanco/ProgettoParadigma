@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component'
 import { LoginPage } from './pages/login/login.component';
 import { TweetsPage } from './pages/tweets/tweets.component';
@@ -18,9 +19,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { UniLoaderService } from './shared/uniLoader.service';
 import { ToastService } from './shared/toast.service';
-import { RouterModule, Router } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { SidenavComponent } from './pages/sidenav/sidenav.component';
+import { AuthService } from './services/auth/auth.service';
 
 
 @NgModule({
@@ -33,11 +38,11 @@ import { RouterModule, Router } from '@angular/router';
     NewTweetPage,
     SignupPage,
     ModalContentPage,
+    SidenavComponent
   ],
   imports: [
-    HttpClientModule,
     BrowserModule,
-    RouterModule.forRoot([{path: 'login', component: LoginPage}]),
+    AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
@@ -46,13 +51,18 @@ import { RouterModule, Router } from '@angular/router';
     MatListModule,
     MatProgressSpinnerModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule,
+    HttpClientModule,
+    FormsModule,
+    MatDialogModule
   ],
   providers: [
     UniLoaderService,
     ToastService,
     UsersPage,
-    
+    AuthService,
+    {provide: MatDialogRef, useValue: {}}
   ],
   bootstrap: [AppComponent]
 })

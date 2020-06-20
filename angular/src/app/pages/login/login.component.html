@@ -10,12 +10,12 @@
 
     <mat-list-item>
       <mat-label position="floating">Email</mat-label>
-      <input matInput (keyup.enter)="gotoNextField(Field)" type="email" ngModel="loginUser.email">
+      <input matInput (keyup.enter)="gotoNextField(Field)" type="email" [(ngModel)]="loginUser.email">
     </mat-list-item>
   
     <mat-list-item>
       <mat-label position="floating">Password</mat-label>
-      <input matInput #Field (keyup.enter)="login()" minlength="5" type="password" ngModel="loginUser.password">
+      <input matInput #Field (keyup.enter)="login()" minlength="5" type="password" [(ngModel)]="loginUser.password">
     </mat-list-item>
   
     <mat-list-item>

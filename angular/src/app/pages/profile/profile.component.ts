@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UsersService } from 'src/app/services/users/users.service';
 import { UniLoaderService } from 'src/app/shared/uniLoader.service';
 import { ToastService } from 'src/app/shared/toast.service';
 import { ToastTypes } from 'src/app/enums/toast-types.enum';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-profile',

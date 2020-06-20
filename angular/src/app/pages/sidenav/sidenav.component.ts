@@ -1,4 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,8 +11,11 @@ export class SidenavComponent implements OnInit {
 
   events: string[] = [];
   opened: boolean;
+  user: User;
 
-  constructor() { }
+  constructor(private auth: AuthService) { 
+    this.user = this.auth.me;
+  }
 
   ngOnInit(): void {
   }

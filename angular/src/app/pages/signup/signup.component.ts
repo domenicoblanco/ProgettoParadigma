@@ -83,5 +83,8 @@ export class SignupPage {
 
   }
 
+  goBack(): void {
+    this.route.navigateByUrl('/login');
+  }
 
 }
