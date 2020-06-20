@@ -24,7 +24,6 @@ export class AuthService {
   ) {}
 
   async login(body: Login): Promise<void> {
-
     // Wrappo l'observable di una chiamata login dentro una promise.
     return new Promise<void>((resolve, reject) => {
       const sub = this.http.post<LoginResponse>(`${environment.API_URL}/login`, body, this.httpOptions)

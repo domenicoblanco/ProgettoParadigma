@@ -37,18 +37,18 @@ export class LoginPage {
     try {
 
       // Avvio il loader in attesa che venga risolta la promise (mostra un indicator activity)
-      await this.uniLoader.show();
+       this.uniLoader.show();
 
       // Effettuo la chiamata login
       await this.auth.login(this.loginUser);
 
       // Se la chiamata è andata buon fine, porto l'utente sulla schermata Tabs
-      await this.route.navigateByUrl('/');
+      await this.route.navigateByUrl('/tabs');
 
     } catch (err) {
 
       // Nel caso la chiamata vada in errore, mostro l'errore in un toast
-      await this.toastService.show({
+      this.toastService.show({
         message: err.message,
         type: ToastTypes.ERROR
       });
@@ -56,7 +56,7 @@ export class LoginPage {
     }
 
     // Chiudo il loader
-    await this.uniLoader.dismiss();
+    this.uniLoader.dismiss();
 
   }
 

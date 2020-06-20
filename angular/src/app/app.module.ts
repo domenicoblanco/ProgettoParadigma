@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component'
-import { AppRoutingModule } from './app-routing.module';
 import { LoginPage } from './pages/login/login.component';
 import { TweetsPage } from './pages/tweets/tweets.component';
 import { SignupPage } from './pages/signup/signup.component';
@@ -17,9 +17,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
-import { RouterModule, RouteReuseStrategy } from '@angular/router';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UniLoaderService } from './shared/uniLoader.service';
 import { ToastService } from './shared/toast.service';
+import { RouterModule, Router } from '@angular/router';
 
 
 @NgModule({
@@ -34,17 +35,18 @@ import { ToastService } from './shared/toast.service';
     ModalContentPage,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
-    AppRoutingModule,
+    RouterModule.forRoot([{path: 'login', component: LoginPage}]),
     BrowserAnimationsModule,
-    RouterModule,
     MatToolbarModule,
     MatIconModule,
     MatGridListModule,
     MatInputModule,
     MatListModule,
     MatProgressSpinnerModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   providers: [
     UniLoaderService,
