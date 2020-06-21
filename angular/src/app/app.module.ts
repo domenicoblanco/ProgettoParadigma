@@ -24,9 +24,11 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { UniLoaderService } from './shared/uniLoader.service';
 import { ToastService } from './shared/toast.service';
 import { AppRoutingModule } from './app-routing.module';
-import { SidenavComponent } from './pages/sidenav/sidenav.component';
 import { AuthService } from './services/auth/auth.service';
-
+import { MatButtonModule } from '@angular/material/button';
+import { DrawerComponent } from './drawer/drawer.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { UnictDatePipe } from './pipes/unict-date.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { AuthService } from './services/auth/auth.service';
     NewTweetPage,
     SignupPage,
     ModalContentPage,
-    SidenavComponent
+    DrawerComponent,
+    UnictDatePipe
   ],
   imports: [
     BrowserModule,
@@ -55,13 +58,16 @@ import { AuthService } from './services/auth/auth.service';
     MatSidenavModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    LayoutModule,
   ],
   providers: [
     UniLoaderService,
     ToastService,
     UsersPage,
     AuthService,
+    DrawerComponent,
     {provide: MatDialogRef, useValue: {}}
   ],
   bootstrap: [AppComponent]

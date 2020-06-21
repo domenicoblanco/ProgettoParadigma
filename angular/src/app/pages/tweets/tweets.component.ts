@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Tweet } from 'src/app/interfaces/tweet';
 import { User } from 'src/app/interfaces/user';
 import { TweetsService } from 'src/app/services/tweets/tweets.service';
@@ -8,15 +8,15 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { UniLoaderService } from 'src/app/shared/uniLoader.service';
 import { ToastService } from 'src/app/shared/toast.service';
 import { ToastTypes } from 'src/app/enums/toast-types.enum';
-import { UsersPage } from 'src/app/pages/users/users.component';
 import { ModalContentPage } from '../modal-content/modal-content.component';
+import { UsersPage } from 'src/app/pages/users/users.component';
 
 @Component({
   selector: 'app-tweets',
   templateUrl: './tweets.component.html',
   styleUrls: ['./tweets.component.scss'],
 })
-export class TweetsPage implements OnInit {
+export class TweetsPage implements OnInit, AfterViewChecked {
 
   tweets: Tweet[] = [];
 
@@ -25,16 +25,23 @@ export class TweetsPage implements OnInit {
     private auth: AuthService,
     public uniLoader: UniLoaderService,
     private toastService: ToastService,
-    private user: UsersPage,
     public dialog: MatDialog,
+    private user: UsersPage
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { 
+    this.getTweets();
+    this.user.getUsers();
+  }
 
-  async ionViewWillEnter() {
+  ngAfterViewChecked() {
+    document.getElementById('toolbar').innerHTML = `<span>Tweets</span>`;
+  }
+
+  /* async ionViewWillEnter() {
     await this.getTweets();
     await this.user.getUsers();
-  }
+  } */
 
   getUser(id: string) {
     for(let user in this.user.users) {

@@ -3,6 +3,80 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+@media only screen and (min-width: 768px) {
+    .container { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+    }
+    .list-users, .list-post {
+        width: 450px;
+        border: 3px solid red;
+    }
+}
+
+@media only screen and (min-width: 768px) {    
+    .form__container {
+        mat-form-field {
+            width: 400px;
+            margin-top: 10px;
+            font-size: 22px;
+            border-radius: 8px;
+        } 
+        .button {
+            width: 180px;
+            font-size: 18px;
+        }
+    }
+    .title {
+        font-weight: bold;
+        font-size: 25px;
+    }
+}
+@media only screen and (max-width: 767px) {   
+    .form {
+        width: 95%;
+    }
+    .form__container {
+        mat-form-field {
+            width: 100%;
+            margin-top: 10px;
+            font-size: 20px;
+        } 
+        .button {
+            width: 160px;
+            font-size: 16px;
+        }
+    }
+    .title {
+        font-weight: bold;
+        font-size: 23px;
+    }
+}
+
+.form__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    button {
+        margin-top: 15px;
+    } 
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button, button:focus {
+    border: none;
+    outline: none;
+}
+
 .error {
     background-color: #eb445a;
     border-color: #eb445a;

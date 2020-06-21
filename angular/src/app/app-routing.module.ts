@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { SidenavComponent } from './pages/sidenav/sidenav.component';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginPage } from './pages/login/login.component';
 import { NewTweetPage } from './pages/new-tweet/new-tweet.component';
 import { ProfilePage } from './pages/profile/profile.component';
@@ -29,10 +28,6 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupPage
-  },
-  {
-    path: 'tabs',
-    component: SidenavComponent
   },
   {
     path: 'tweets',

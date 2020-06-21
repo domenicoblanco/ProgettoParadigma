@@ -1,30 +1,27 @@
 <mat-toolbar>
-    <mat-toolbar class='title'>Progetto Paradigma</mat-toolbar>  <!-- Cambiare titolo (mettere il nome che si vuole dare al progetto) -->
+    <mat-toolbar class='title'>Progetto Paradigma</mat-toolbar>  
 </mat-toolbar>
-  
-<mat-card>
 
-  <div class="form__container">
+<div class="form__container">
 
-    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+  <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
 
-    <mat-list-item>
+  <form class='form'>
+    <mat-form-field>
       <mat-label position="floating">Email</mat-label>
-      <input matInput (keyup.enter)="gotoNextField(Field)" type="email" [(ngModel)]="loginUser.email">
-    </mat-list-item>
+      <input matInput type="email" name='email' [(ngModel)]="loginUser.email">  <!-- per usare [(ngModel)] correttamente ogni input deve avere un attributo name con un valore definito-->
+    </mat-form-field>
   
-    <mat-list-item>
+    <mat-form-field>
       <mat-label position="floating">Password</mat-label>
-      <input matInput #Field (keyup.enter)="login()" minlength="5" type="password" [(ngModel)]="loginUser.password">
-    </mat-list-item>
-  
-    <mat-list-item>
-      <button mat-button [disabled]="isDataInvalid()" color='tertiary' fill="solid" (click)="login()">Login</button>
-    </mat-list-item>
-    <mat-list-item>
-      <button mat-button fill="solid" color='tertiary' (click)="goToSignup()">Create account</button>
-    </mat-list-item>
-    </div>
+      <input matInput minlength="5" name='password' type="password" [(ngModel)]="loginUser.password">
+      <mat-error *ngIf="loginUser.password.length < 5">Password too short</mat-error>
+    </mat-form-field>
 
-</mat-card>
+    <button mat-raised-button color='primary' [disabled]="isDataInvalid()" (click)="login()">Login</button>
+    <button mat-raised-button color='primary' (click)="goToSignup()">Create account</button>
+
+  </form>
+    
   
+</div>

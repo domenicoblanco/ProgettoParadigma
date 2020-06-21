@@ -1,7 +1,7 @@
 <mat-toolbar role='heading'>
   <mat-toolbar>
-    <div class='back-button'>
-      <button [routerLink]='["/login"]' mat-button>
+    <div>
+      <button mat-button class='back-button' [routerLink]='["/login"]'>
         <mat-icon>arrow_back</mat-icon>
       </button>
     </div>
@@ -9,35 +9,32 @@
   </mat-toolbar>
 </mat-toolbar>
   
-<mat-card>
+<div class="form__container">
 
-  <div class="form__container">
+  <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
 
-    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
-
-    <mat-list-item>
+  <form class='form'>
+    <mat-form-field>
       <mat-label position="floating">Name</mat-label>
-      <input matInput (keyup.enter)="gotoNextField(Field2)" type="text" [(ngModel)]="user.name" />
-    </mat-list-item>
-  
-    <mat-list-item>
-      <mat-label position="floating">Surname</mat-label>
-      <input matInput #Field2 (keyup.enter)="gotoNextField(Field3)" type="text" [(ngModel)]="user.surname" />
-    </mat-list-item>
-  
-    <mat-list-item>
-      <mat-label position="floating">Email</mat-label>
-      <input matInput #Field3 (keyup.enter)="gotoNextField(Field4)" type="email" [(ngModel)]="user.email" />
-    </mat-list-item>
-  
-    <mat-list-item>
-      <mat-label position="floating">Password</mat-label>
-      <input matInput #Field4 (keyup.enter)="signup()" minlength="5" type="password" [(ngModel)]="user.password" />
-    </mat-list-item>
-  
-    <button mat-button [disabled]="isDataInvalid()" color='success' fill="solid" (click)="signup()">Confirm</button>
-  </div>
+      <input matInput type="text" name='name' [(ngModel)]="user.name">  <!-- per usare [(ngModel)] correttamente ogni input deve avere un attributo name con un valore definito-->
+    </mat-form-field>
 
-</mat-card>
+    <mat-form-field>
+      <mat-label position="floating">Surname</mat-label>
+      <input matInput type="text" name='surname' [(ngModel)]="user.surname">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label position="floating">Email</mat-label>
+      <input matInput type="email" name='email' [(ngModel)]="user.email">  
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label position="floating">Password</mat-label>
+      <input matInput minlength="5" name='password' type="password" [(ngModel)]="user.password">
+    </mat-form-field>
+
+    <button mat-raised-button color='primary' [disabled]="isDataInvalid()" (click)="signup()">Confirm</button>
+  </form>
   
-  
+</div>

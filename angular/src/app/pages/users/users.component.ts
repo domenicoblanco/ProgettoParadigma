@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewChecked } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { UsersService } from 'src/app/services/users/users.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -11,7 +11,7 @@ import { UniLoaderService } from 'src/app/shared/uniLoader.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
 })
-export class UsersPage implements OnInit {
+export class UsersPage implements AfterViewChecked {
 
   users: User[] = [];
 
@@ -24,7 +24,14 @@ export class UsersPage implements OnInit {
     public uniLoader: UniLoaderService
   ) {}
 
-  ngOnInit() {} 
+  /* ngAfterViewInit() {
+    const x = document.getElementById('toolbar').innerHTML = '<span>Users</span>';
+    console.log(x);
+  } */
+
+  ngAfterViewChecked() {
+    document.getElementById('toolbar').innerHTML = '<span>Users</span>';
+  }
 
   async ionViewWillEnter() {
     await this.getUsers();

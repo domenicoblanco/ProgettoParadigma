@@ -1,0 +1,31 @@
+<mat-drawer-container class="sidenav-container">
+  <mat-drawer #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      mode="push">
+    <mat-toolbar>
+      Welcome back {{user.name}}
+    </mat-toolbar>
+    <div class='profile-container'>
+      <img mat-image-avatar class='profile-image' [src]="user.image" />
+    </div>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/tweets']"> <mat-icon class='menu-icon' color='primary' >message</mat-icon> Tweets</a>
+      <a mat-list-item [routerLink]="['/users']"> <mat-icon class='menu-icon' color='primary'>people</mat-icon> Users</a>
+      <a mat-list-item [routerLink]="['/profile']"> <mat-icon class='menu-icon' color='primary'>person</mat-icon> Profile</a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+      <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div id='toolbar'></div>
+  </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

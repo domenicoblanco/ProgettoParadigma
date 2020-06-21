@@ -20,7 +20,9 @@ export class LoginPage {
     private auth: AuthService,
     public uniLoader: UniLoaderService,
     private toastService: ToastService
-  ) { }
+  ) { 
+    this.loginUser.password = "";
+  }
 
   gotoNextField(nextElement) {
     nextElement.setFocus();
@@ -61,7 +63,7 @@ export class LoginPage {
   }
 
   isDataInvalid(): boolean {
-
+    
     if (this.loginUser.password) {
       return this.loginUser.password.length < 5;
     }

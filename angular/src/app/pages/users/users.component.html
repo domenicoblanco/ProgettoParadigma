@@ -1,33 +1,28 @@
-<app-sidenav></app-sidenav>
-<mat-toolbar>
-    <mat-toolbar>
-      <mat-toolbar class='title'>Users</mat-toolbar>
-    </mat-toolbar>
-</mat-toolbar>
-  
-<mat-card class='box-content'>
+<app-drawer>
+    
+    <mat-card class='box-content'>
 
-    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+        <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
 
-    <div class='container'>
-        <mat-list-item class='list-users'>
+        <div class='container'>
+            <mat-list-item class='list-users'>
 
-        <mat-list-item lines='none' class='box-item' *ngFor="let user of users;">
+            <mat-list-item lines='none' class='box-item' *ngFor="let user of users;">
 
-            <img mat-card-avatar class='user-avatar'>
-            <img [src]="user.image">
-            
-            
-            <mat-label>
-                <input matInput color="primary">
-                    <h3>{{ user.name }} {{ user.surname }}</h3>
+                <img mat-card-avatar class='user-avatar'>
+                <img [src]="user.image">
                 
-                <p>{{ user.email }}</p>
-            </mat-label>
-        
-        </mat-list-item>
+                
+                <mat-label>
+                    <input matInput color="primary">
+                        <h3>{{ user.name }} {{ user.surname }}</h3>
+                    
+                    <p>{{ user.email }}</p>
+                </mat-label>
+            
+            </mat-list-item>
 
-        </mat-list-item> 
-    </div>
-</mat-card>
-  
+            </mat-list-item> 
+        </div>
+    </mat-card>
+</app-drawer>

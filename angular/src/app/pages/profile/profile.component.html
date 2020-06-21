@@ -1,64 +1,59 @@
-<app-sidenav></app-sidenav>
-<mat-toolbar role='heading'>
-  <mat-toolbar>
-    <mat-toolbar class='title'>Profile</mat-toolbar>
-  </mat-toolbar>
-</mat-toolbar>
-  
-<mat-card>
+<app-drawer>
+    
+  <mat-card>
 
-  <h1 mat-dialog-title>Head up!</h1>
-  <div mat-dialog-content>
-      <h2>You are about to delete your account.</h2>
-      <p>Do you confirm you want to proceed with this action?</p>
-  </div>
-  <div mat-dialog-actions>
-      <button mat-button class='success' mat-button matDialogClose (click)='onNoClick()'>Cancel</button>
-      <button mat-button class='error' (click)='this.confirmedDeletedUser(); onNoClick()'>OK</button>
-  </div>
-
-  <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
-
-  <div class="avatar__container">
-    <mat-card-header class='box-image'>
-      <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg" /> 
-      <img mat-card-avatar class="profile-img" [src]='this.me.image? this.me.image : "./assets/users/me.png"'>
-    </mat-card-header>
-  </div>
-
-  <mat-list-item>
-    <mat-label position="stacked">Name</mat-label>
-    <input matInput [(ngModel)]="me.name" [readonly]="readOnly">
-  </mat-list-item>
-  <mat-list-item>
-    <mat-label position="stacked">Surname</mat-label>
-    <input matInput [(ngModel)]="me.surname" [readonly]="readOnly">
-  </mat-list-item>
-  <mat-list-item>
-    <mat-label position="stacked">Email</mat-label>
-    <input matInput type="email" [(ngModel)]="me.email" [readonly]="readOnly">
-  </mat-list-item>
-
-  <mat-grid-list cols='2'>
-      <button mat-button expand="block" fill="solid" color="secondary" (click)="editAndSave()">
-        <mat-icon>{{readOnly ? 'create' : 'checkmark'}}</mat-icon> 
-        {{ readOnly ? 'Edit' : 'Save' }} profile
-      </button>
-
-      <button mat-button expand="block" fill="solid" color="danger" (click)="openDialog()">
-        <mat-icon name="close-circle"></mat-icon> 
-        Delete profile
-      </button>
-
-  </mat-grid-list>
-
-</mat-card>
-
-<mat-toolbar>
-  <mat-toolbar>
-    <div class="button-logout">
-      <button mat-button fill='solid' color="tertiary" (click)="logout()">Logout</button>
+    <h1 mat-dialog-title>Head up!</h1>
+    <div mat-dialog-content>
+        <h2>You are about to delete your account.</h2>
+        <p>Do you confirm you want to proceed with this action?</p>
     </div>
+    <div mat-dialog-actions>
+        <button mat-button class='success' mat-button matDialogClose (click)='onNoClick()'>Cancel</button>
+        <button mat-button class='error' (click)='this.confirmedDeletedUser(); onNoClick()'>OK</button>
+    </div>
+
+    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+
+    <div class="avatar__container">
+      <mat-card-header class='box-image'>
+        <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg" /> 
+        <img mat-card-avatar class="profile-img" [src]='this.me.image? this.me.image : "./assets/users/me.png"'>
+      </mat-card-header>
+    </div>
+
+    <mat-list-item>
+      <mat-label position="stacked">Name</mat-label>
+      <input matInput [(ngModel)]="me.name" [readonly]="readOnly">
+    </mat-list-item>
+    <mat-list-item>
+      <mat-label position="stacked">Surname</mat-label>
+      <input matInput [(ngModel)]="me.surname" [readonly]="readOnly">
+    </mat-list-item>
+    <mat-list-item>
+      <mat-label position="stacked">Email</mat-label>
+      <input matInput type="email" [(ngModel)]="me.email" [readonly]="readOnly">
+    </mat-list-item>
+
+    <mat-grid-list cols='2'>
+        <button mat-button expand="block" fill="solid" color="secondary" (click)="editAndSave()">
+          <mat-icon>{{readOnly ? 'create' : 'checkmark'}}</mat-icon> 
+          {{ readOnly ? 'Edit' : 'Save' }} profile
+        </button>
+
+        <button mat-button expand="block" fill="solid" color="danger" (click)="openDialog()">
+          <mat-icon name="close-circle"></mat-icon> 
+          Delete profile
+        </button>
+
+    </mat-grid-list>
+
+  </mat-card>
+
+  <mat-toolbar>
+    <mat-toolbar>
+      <div class="button-logout">
+        <button mat-button fill='solid' color="tertiary" (click)="logout()">Logout</button>
+      </div>
+    </mat-toolbar>
   </mat-toolbar>
-</mat-toolbar>
-  
+</app-drawer>

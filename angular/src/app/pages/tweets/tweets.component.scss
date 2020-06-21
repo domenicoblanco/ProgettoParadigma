@@ -1,0 +1,28 @@
+.fab-bottom {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+mat-list-item {
+    margin: 8px 0px;
+}
+
+.box-content {
+    background-color: lightgray;
+}
+
+.profile-image {
+    width: 64px;
+    height: 64px;
+}
+
+mat-card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.icon-user {
+    vertical-align: middle;
+}

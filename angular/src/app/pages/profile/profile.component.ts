@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage implements OnInit, AfterViewChecked {
 
   me: User;
 
@@ -31,6 +31,10 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.me = this.auth.me;
+  }
+
+  ngAfterViewChecked() {
+    document.getElementById('toolbar').innerHTML = '<span>Profile</span>';
   }
 
   openDialog(): void {
