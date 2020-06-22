@@ -39,6 +39,8 @@ export class NewTweetPage implements OnInit {
     
     if(this.editMode)
       this.isStory = this.tweet.isStory;
+    else
+      this.newTweet.image = "";
     if(typeof(this.tweet.prop) == "boolean")
       this.isStory = this.tweet.prop
   }

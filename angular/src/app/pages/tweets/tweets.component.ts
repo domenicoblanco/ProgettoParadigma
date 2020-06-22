@@ -44,6 +44,7 @@ export class TweetsPage implements OnInit, AfterViewChecked {
       if(this.user.users[user]._id == id)
         return this.user.users[user];
     }
+    return this.auth.me
   }
 
   async showModal(component, prop: boolean | Tweet | User, refresh = false) {

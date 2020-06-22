@@ -64,12 +64,9 @@ export class SignupPage {
         message: err.message,
         type: ToastTypes.ERROR
       });
-
+      // Chiudo il loader
+      await this.uniLoader.dismiss();
     }
-
-    // Chiudo il loader
-    await this.uniLoader.dismiss();
-
   }
 
   isDataInvalid(): boolean {

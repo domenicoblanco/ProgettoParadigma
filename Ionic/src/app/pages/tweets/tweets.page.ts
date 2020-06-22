@@ -29,11 +29,13 @@ export class TweetsPage implements OnInit {
     private user: UsersPage,
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   async ionViewWillEnter() {
-    await this.getTweets();
     await this.user.getUsers();
+    await this.getTweets();
+    await this.uniLoader.dismiss()
   }
 
   getUser(id: string) {
@@ -118,7 +120,6 @@ export class TweetsPage implements OnInit {
     */
     modal.onDidDismiss()
     .then(async () => {
-
       // Aggiorno la mia lista di tweet, per importare le ultime modifiche apportate dall'utente
       await this.getTweets();
 

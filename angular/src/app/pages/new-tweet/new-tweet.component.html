@@ -23,10 +23,10 @@
     <mat-form-field appearance="outline">
       <mat-label>{{ editMode ? 'Edit' : 'Write' }} your message</mat-label>
 
-      <ng-template *ngIf="editMode; else new">
+      <div *ngIf="editMode; else new">
         <textarea matInput #inputTweet name="tweet" minlength="1" maxlength="280" [(ngModel)]="tweetToEdit.tweet"></textarea>
         <mat-hint>{{inputTweet.value.length || 0}}/280</mat-hint>
-      </ng-template>
+      </div>
       
       <ng-template #new>
         <textarea matInput #newInput minlength="1" maxlength="280" name="tweet" [(ngModel)]="newTweet.tweet"></textarea>
@@ -37,6 +37,10 @@
 
     <div *ngIf='newTweet.image' class='box-image'>
       <img mat-card-image class='fit-parent' src="{{ newTweet.image }}">
+    </div>
+
+    <div *ngIf='editMode' class='box-image'>
+      <img mat-card-image class='fit-parent' src="{{ tweetToEdit.image }}">
     </div>
   </mat-card-content>
 
