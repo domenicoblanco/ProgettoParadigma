@@ -26,3 +26,37 @@ mat-card-header {
 .icon-user {
     vertical-align: middle;
 }
+
+.editOrDeletePost{
+    margin-left: auto;
+}
+
+.spacewrap {
+    white-space: normal;
+}
+
+mat-card-content{
+    padding: 0px 5px;
+}
+
+.rounded-image {
+    border-radius: 8px;
+}
+
+.carousel {
+    flex-direction: row;
+    display: inline-flex;
+}
+
+.storiesList {
+    display: inline-flex;
+    overflow-x: scroll;
+}
+
+.story-image {
+    max-width: 64px;
+}
+
+.storycontainer {
+    overflow-y: hidden;
+}

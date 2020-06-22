@@ -12,33 +12,26 @@ import { UsersPage } from 'src/app/pages/users/users.component';
 })
 export class ModalContentPage implements OnInit {
 
-  isStory: boolean;
+  isStory: boolean = false;
 
   story: Tweet;
   user: User;
   username: string;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Tweet | User,
-    @Inject(MAT_DIALOG_DATA) public dialogRef: MatDialogRef<TweetsPage> | MatDialogRef<UsersPage>
-  ) { 
-    this.isStory = false;
-  }
+   @Inject(MAT_DIALOG_DATA) public data,
+   @Inject(MAT_DIALOG_DATA) public dialogRef: MatDialogRef<TweetsPage> | MatDialogRef<UsersPage>
+  ) {}
 
   ngOnInit() {
-    if(this.data.constructor.name == 'Tweet') {
-      this.story = this.data as Tweet;
+    if("isStory" in this.data.prop) {
+      this.story = this.data.prop as Tweet;
       this.isStory = this.story.isStory;
       this.username = `${this.story._author.name} ${this.story._author.surname}`;
     }
     else {
-      this.user = this.data as User;
+      this.user = this.data.prop as User;
       this.username = `${this.user.name} ${this.user.surname}`;
     }
   }
-
-  dismiss() {
-    this.dialogRef.close();
-  }
-
 }

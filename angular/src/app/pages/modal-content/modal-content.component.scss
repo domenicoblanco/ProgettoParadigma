@@ -1,0 +1,21 @@
+mat-card-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.button-container {
+    display: flex;
+    margin-left: auto;
+}
+
+.box-image {
+    display: flex;
+    justify-content: center;
+}
+
+.fit-parent {
+    object-fit: scale-down;
+    margin: 0px 15px;
+    border-radius: 8px;
+    max-height: 40vw;
+}

@@ -29,6 +29,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DrawerComponent } from './drawer/drawer.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { UnictDatePipe } from './pipes/unict-date.pipe';
+import { DeleteProfileComponent } from './pages/delete-profile/delete-profile.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UnictDatePipe } from './pipes/unict-date.pipe';
     SignupPage,
     ModalContentPage,
     DrawerComponent,
-    UnictDatePipe
+    UnictDatePipe,
+    DeleteProfileComponent
   ],
   imports: [
     BrowserModule,

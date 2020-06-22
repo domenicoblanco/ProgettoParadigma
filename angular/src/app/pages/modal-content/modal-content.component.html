@@ -1,24 +1,21 @@
-<mat-toolbar>
-  <mat-toolbar>
-    <mat-toolbar class='title'>{{ username }}</mat-toolbar>
-    <mat-toolbar slot="end">
-      <button mat-button color="dark" (click)="dismiss()">
-        <mat-icon slot="icon-only">close</mat-icon>
+<mat-card style="width: 45vw; margin: -24px;">
+  <mat-card-header style="margin-bottom: 20px">
+    <mat-card-title class='title'>{{ username }}</mat-card-title>
+    <div class="button-container">
+      <button mat-button color="error" matDialogClose>
+        <mat-icon>close</mat-icon>
       </button>
-    </mat-toolbar>
-  </mat-toolbar>
-</mat-toolbar>
-  
-<mat-card>
+    </div>
+  </mat-card-header>
 
-  <mat-list-item *ngIf='isStory' class='text-item'>
-    <h2>{{story.tweet}}</h2>
-  </mat-list-item>
-  <div *ngIf='!isStory || (isStory && story.image)' class='box-image'>
-    <img mat-card-image *ngIf='isStory; else userProfile' class='fit-parent' [src]="story.image">
-    <ng-template #userProfile>
-      <img mat-card-image class='fit-parent' [src]="user.image">
-    </ng-template>
-  </div>
+  <mat-card-content class='text-item'>
+    <h2 *ngIf='isStory'>{{story.tweet}}</h2>
+    <div *ngIf='!isStory || (isStory && story.image)' class='box-image'>
+      <img mat-card-image *ngIf='isStory; else userProfile' class='fit-parent' [src]="story.image">
+      <ng-template #userProfile>
+        <img mat-card-image class='fit-parent' [src]="user.image">
+      </ng-template>
+    </div>
+  </mat-card-content>
 </mat-card>
   

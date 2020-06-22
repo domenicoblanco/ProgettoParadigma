@@ -6,6 +6,7 @@ import { ToastService } from 'src/app/shared/toast.service';
 import { ToastTypes } from 'src/app/enums/toast-types.enum';
 import { UniLoaderService } from 'src/app/shared/uniLoader.service';
 import { TweetsPage } from '../tweets/tweets.component';
+import { UsersPage } from '../users/users.component';
 
 @Component({
   selector: 'app-new-tweet',
@@ -28,16 +29,18 @@ export class NewTweetPage implements OnInit {
     private tweetsService: TweetsService,
     private toastService: ToastService,
     public uniLoader: UniLoaderService,
-    @Inject(MAT_DIALOG_DATA) public tweet: Tweet,
+    @Inject(MAT_DIALOG_DATA) public tweet,
     public dialogRef: MatDialogRef<TweetsPage>
   ) { }
 
   ngOnInit() {
-   
-    this.tweetToEdit = this.tweet;
+    this.tweetToEdit = this.tweet.tweet;
     this.editMode = this.tweetToEdit !== undefined;
-
-    this.isStory = this.tweet.isStory;
+    
+    if(this.editMode)
+      this.isStory = this.tweet.isStory;
+    if(typeof(this.tweet.prop) == "boolean")
+      this.isStory = this.tweet.prop
   }
 
   countCharacter() {
@@ -121,11 +124,11 @@ export class NewTweetPage implements OnInit {
 
     if (this.editMode) {
       return !this.tweetToEdit.tweet.length ||
-      this.tweetToEdit.tweet.length > 120;
+      this.tweetToEdit.tweet.length > 280;
     } else {
       if (this.newTweet.tweet) {
         return !this.newTweet.tweet.length ||
-        this.newTweet.tweet.length > 120;
+        this.newTweet.tweet.length > 280;
       }
       return true;
     }

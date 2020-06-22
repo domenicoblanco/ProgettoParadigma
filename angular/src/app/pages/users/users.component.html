@@ -1,28 +1,18 @@
 <app-drawer>
-    
-    <mat-card class='box-content'>
-
-        <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
-
+    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+    <div class="box-content">
         <div class='container'>
-            <mat-list-item class='list-users'>
-
-            <mat-list-item lines='none' class='box-item' *ngFor="let user of users;">
-
-                <img mat-card-avatar class='user-avatar'>
-                <img [src]="user.image">
-                
-                
-                <mat-label>
-                    <input matInput color="primary">
-                        <h3>{{ user.name }} {{ user.surname }}</h3>
-                    
-                    <p>{{ user.email }}</p>
-                </mat-label>
-            
+            <mat-list-item class='box-item' *ngFor="let user of users">
+                <mat-card class="card">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <h3>{{ user.name }} {{ user.surname }}</h3>
+                        </mat-card-title>
+                        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+                        <img mat-card-avatar class='user-avatar' [src]="user.image">
+                    </mat-card-header>
+                </mat-card>
             </mat-list-item>
-
-            </mat-list-item> 
         </div>
-    </mat-card>
+    </div>
 </app-drawer>

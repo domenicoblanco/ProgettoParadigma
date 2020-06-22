@@ -6,6 +6,7 @@ import { UsersService } from 'src/app/services/users/users.service';
 import { UniLoaderService } from 'src/app/shared/uniLoader.service';
 import { ToastService } from 'src/app/shared/toast.service';
 import { ToastTypes } from 'src/app/enums/toast-types.enum';
+import { DeleteProfileComponent } from '../delete-profile/delete-profile.component'
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,7 +26,7 @@ export class ProfilePage implements OnInit, AfterViewChecked {
     private route: Router,
     public uniLoader: UniLoaderService,
     private toastService: ToastService,
-    public dialogRef: MatDialogRef<ProfilePage>,
+    public dialogRef: MatDialogRef<DeleteProfileComponent>,
     public dialog: MatDialog
   ) { }
 
@@ -38,16 +39,12 @@ export class ProfilePage implements OnInit, AfterViewChecked {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ProfilePage, {
+    const dialogRef = this.dialog.open(DeleteProfileComponent, {
       width: '250px',
     });
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
     });
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 
   loadImageFromDevice(event) {
@@ -108,34 +105,6 @@ export class ProfilePage implements OnInit, AfterViewChecked {
 
     // Altrimenti, cambio lo stato della mia variabile - per rendere i campi editabili o meno
     this.readOnly = !this.readOnly;
-
-  }
-
-  async confirmedDeletedUser() {
-
-    try {
-
-      // Avvio il loader
-      await this.uniLoader.show();
-
-      // Effettuo la chiamata per cancellare la il mio utente
-      await this.usersService.deleteUser(this.me._id);
-
-      // Procedo con il logout
-      await this.logout();
-
-    } catch (err) {
-
-      // Nel caso la chiamata vada in errore, mostro l'errore in un toast
-      await this.toastService.show({
-        message: err.message,
-        type: ToastTypes.ERROR
-      });
-
-    }
-
-    // Chiudo il loader
-    await this.uniLoader.dismiss();
 
   }
 

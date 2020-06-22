@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Tweet } from 'src/app/interfaces/tweet';
 import { User } from 'src/app/interfaces/user';
 import { TweetsService } from 'src/app/services/tweets/tweets.service';
-import { MatDialog } from '@angular/material/dialog'; 
+import { MatDialog, MatDialogRef } from '@angular/material/dialog'; 
 import { NewTweetPage } from '../new-tweet/new-tweet.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UniLoaderService } from 'src/app/shared/uniLoader.service';
@@ -38,21 +38,17 @@ export class TweetsPage implements OnInit, AfterViewChecked {
     document.getElementById('toolbar').innerHTML = `<span>Tweets</span>`;
   }
 
-  /* async ionViewWillEnter() {
-    await this.getTweets();
-    await this.user.getUsers();
-  } */
-
   getUser(id: string) {
     for(let user in this.user.users) {
-      if(this.user.users[user]._id == id) return this.user.users[user];
+      if(this.user.users[user]._id == id)
+        return this.user.users[user];
     }
   }
 
   async showModal(component, prop: boolean | Tweet | User, refresh = false) {
     const modal = this.dialog.open(component, {
       data: {
-        props: prop
+        prop
       } 
     });
 

@@ -1,0 +1,43 @@
+.align-icons {
+    align-self: auto;
+}
+
+.image-uploader {
+    width: 0px;
+    opacity: 0;
+}
+
+#file-input {
+    opacity: 0;
+    z-index: 1;
+    height: 160px;
+    width: 160px;
+}
+
+.box-image {
+    display: flex;
+    justify-content: center;
+}
+
+mat-form-field{
+    width: 100%;
+    height: auto;
+}
+
+.fit-parent {
+    object-fit: scale-down;
+    margin: 0px 15px;
+    border-radius: 8px;
+    max-height: 40vw;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+mat-card-footer {
+    display: flex;
+    justify-content: center;
+}

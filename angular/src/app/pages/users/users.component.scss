@@ -1,0 +1,28 @@
+.box-content {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    height: 100%;
+}
+
+.card {
+    margin: 8px 0px;
+    border-radius: 8px;
+}
+
+.user-avatar {
+    width: 64px;
+    height: 64px;
+}
+
+.container {
+    margin: 0px 15px;
+    overflow-x: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+    .box-item {
+        width: 450px;
+    }
+}

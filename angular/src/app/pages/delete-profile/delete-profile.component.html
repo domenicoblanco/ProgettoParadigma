@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Head up!</h1>
+<div mat-dialog-content>
+    <h3>You are about to delete your account.</h3>
+    <p>Do you confirm you want to proceed with this action?</p>
+</div>
+<div mat-dialog-actions class="button-wrapper">
+    <button mat-button class='success full-w' mat-button matDialogClose>Cancel</button>
+    <button mat-button class='error full-w' (click)='this.confirmedDeletedUser()' matDialogClose>OK</button>
+</div>

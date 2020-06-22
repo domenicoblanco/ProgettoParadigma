@@ -1,43 +1,44 @@
-<mat-toolbar>
-  <mat-toolbar>
-    <mat-toolbar class='title'>{{ isStory ? 'New Story' : 'New Tweet' }}</mat-toolbar>
-    <mat-toolbar slot="end">
-      <button mat-button color="dark">
-        <mat-icon style='position: absolute' slot="icon-only">attach_file</mat-icon> 
-        <input style='opacity: 0' type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg" /> 
-      </button>
-      <button mat-button color="dark" (click)="dismiss()">
-        <mat-icon slot="icon-only">close</mat-icon>
-      </button>
-    </mat-toolbar>
-  </mat-toolbar>
-</mat-toolbar>
-  
-<mat-card>
+<mat-card style="width: 45vw; margin: -24px;">
+  <mat-card-header style="display: unset!important;">
+    <div class="card-header">
+      <mat-card-title class='title'>{{ isStory ? 'New Story' : editMode ? "Edit tweet" : 'New Tweet' }}</mat-card-title>
+      <div style="margin-left: auto!important; z-index: 0">
+        <button mat-button (click)="fileinput.click()" color="dark" class="align-icons">
+          <mat-icon>attach_file</mat-icon> 
+          <input #fileinput class='image-uploader' type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg">
+        </button>
+        <button mat-button color="dark" (click)="dismiss()">
+          <mat-icon slot="icon-only">close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-header>
 
-  <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+  <mat-card-content>
+    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
 
-  <mat-list-item class='text-item'>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ editMode ? 'Edit' : 'Write' }} your message</mat-label>
 
-    <mat-label position="floating">{{ editMode ? 'Edit' : 'Write' }} your message</mat-label>
-    <mat-label id='character-counter' position="floating">0/280</mat-label>
-    <mat-form-field *ngIf="editMode; else newMode" [(ngModel)]="tweetToEdit.tweet">
-      <textarea matInput></textarea>
+      <ng-template *ngIf="editMode; else new">
+        <textarea matInput #inputTweet name="tweet" minlength="1" maxlength="280" [(ngModel)]="tweetToEdit.tweet"></textarea>
+        <mat-hint>{{inputTweet.value.length || 0}}/280</mat-hint>
+      </ng-template>
+      
+      <ng-template #new>
+        <textarea matInput #newInput minlength="1" maxlength="280" name="tweet" [(ngModel)]="newTweet.tweet"></textarea>
+        <mat-hint>{{newInput.value.length || 0}}/280</mat-hint>
+      </ng-template>
+      
     </mat-form-field>
-    <ng-template #newMode>
-      <mat-form-field (ionChange)='countCharacter()' minlength="1" maxlength="280" [(ngModel)]="newTweet.tweet"></mat-form-field>
-    </ng-template>
-  </mat-list-item>
-  <div *ngIf='newTweet.image' class='box-image'>
-    <img mat-card-image class='fit-parent' src="{{ newTweet.image }}">
-  </div>
+
+    <div *ngIf='newTweet.image' class='box-image'>
+      <img mat-card-image class='fit-parent' src="{{ newTweet.image }}">
+    </div>
+  </mat-card-content>
+
+  <mat-card-footer class='button-tweet'>
+    <button mat-button color='primary' fill='solid' [disabled]="isDataInvalid()" (click)="createOrEditTweet()">Confirm</button>
+  </mat-card-footer>
 </mat-card>
-  
-<mat-toolbar>
-  <mat-toolbar>
-    <mat-toolbar class='button-tweet'>
-      <button mat-button color='primary' fill='solid' [disabled]="isDataInvalid()" (click)="createOrEditTweet()">Confirm</button>
-    </mat-toolbar>
-  </mat-toolbar>
-</mat-toolbar>
   
