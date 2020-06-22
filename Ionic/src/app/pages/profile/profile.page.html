@@ -9,7 +9,7 @@
   <div class="avatar__container">
     <ion-avatar class='box-image'>
       <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg" /> 
-      <img class="profile-img" [src]='this.me.image? this.me.image : "./assets/users/me.png"'>
+      <img class="profile-img" [src]='this.me.image'>
     </ion-avatar>
   </div>
 

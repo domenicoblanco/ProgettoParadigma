@@ -25,6 +25,7 @@ export class DeleteProfileComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.me = this.auth.me
   }
 
   async confirmedDeletedUser() {
