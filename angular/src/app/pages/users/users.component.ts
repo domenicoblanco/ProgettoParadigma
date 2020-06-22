@@ -30,7 +30,6 @@ export class UsersPage implements AfterViewChecked, OnInit {
 
   ngAfterViewInit() {
     const x = document.getElementById('toolbar').innerHTML = '<span>Users</span>';
-    console.log(x);
   }
 
   ngAfterViewChecked() {

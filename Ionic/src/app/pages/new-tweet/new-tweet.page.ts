@@ -40,15 +40,19 @@ export class NewTweetPage implements OnInit {
     this.editMode = this.tweetToEdit !== undefined;
 
     this.isStory = this.navParams.get('props') ? true : false;
+    this.countCharacter();
   }
 
   countCharacter() {
-    document.getElementById('character-counter').innerHTML = `${this.newTweet.tweet.length}/280`;
+    let currentEdit = this.editMode ? this.tweetToEdit : this.newTweet;
+
+    document.getElementById('character-counter').innerHTML = `${currentEdit.tweet.length}/280`;
     let myitem = document.getElementsByClassName("text-item")[0];
-    if(this.newTweet.tweet.length < 200){
+
+    if(currentEdit.tweet.length < 200){
       myitem.classList.remove("mywarning", "myerror");
       myitem.classList.add("ion-valid");
-    } else if(this.newTweet.tweet.length >= 200 && this.newTweet.tweet.length <= 270){
+    } else if(currentEdit.tweet.length >= 200 && currentEdit.tweet.length <= 270){
       myitem.classList.remove("ion-valid", "myerror");
       myitem.classList.add("mywarning");
     } else {

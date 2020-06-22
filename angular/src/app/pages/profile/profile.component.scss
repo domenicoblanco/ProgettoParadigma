@@ -6,3 +6,52 @@
     justify-content: center;
     background-color: lightgray;
 }
+
+.profile-img {
+    width: 160px;
+    height: 160px;
+    z-index: 0;
+    border-radius: 50%;
+}
+
+#file-input {
+    opacity: 0;
+    width: 160px;
+    height: 160px;
+    z-index: 1;
+    position: absolute;
+}
+
+.logout-wrapper {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+}
+
+.logout-button {
+    background-color: #009688;
+    color: white;
+    width: 200px;
+    height: 36px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.full-w {
+    width: 100%;
+}
+
+.card-footer {
+    display: flex;
+}
+
+@media only screen and (max-width: 350px){
+    .card-footer {
+        flex-direction: column;
+    }
+}

@@ -1,5 +1,7 @@
 <app-drawer>
-    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+    <div *ngIf='uniLoader.visibility' class="spinnerWrapper">
+        <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+    </div>
     <div class="box-content">
         <div class='container'>
             <mat-list-item class='box-item' *ngFor="let user of users">

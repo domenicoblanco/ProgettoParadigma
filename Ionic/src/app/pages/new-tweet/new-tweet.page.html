@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class='title'>{{ isStory ? 'New Story' : 'New Tweet' }}</ion-title>
+    <ion-title class='title'>{{ isStory ? 'New Story' : editMode ? 'Edit Tweet' : 'New Tweet' }}</ion-title>
     <ion-buttons slot="end">
       <ion-button color="dark">
         <ion-icon style='position: absolute' slot="icon-only" name="attach"></ion-icon> 
@@ -18,13 +18,15 @@
   <ion-item class='text-item'>
 
     <ion-label position="floating">{{ editMode ? 'Edit' : 'Write' }} your message</ion-label>
+    
     <ion-label id='character-counter' position="floating">0/280</ion-label>
-    <ion-textarea *ngIf="editMode; else newMode" [(ngModel)]="tweetToEdit.tweet"></ion-textarea>
+    
+    <ion-textarea *ngIf="editMode; else newMode" name="tweet" (ionChange)='countCharacter()' [(ngModel)]="tweetToEdit.tweet"></ion-textarea>
     <ng-template #newMode>
-      <ion-textarea (ionChange)='countCharacter()' minlength="1" maxlength="280" [(ngModel)]="newTweet.tweet"></ion-textarea>
+      <ion-textarea (ionChange)='countCharacter()' minlength="1" maxlength="280" name="tweet" [(ngModel)]="newTweet.tweet"></ion-textarea>
     </ng-template>
   </ion-item>
-  <div *ngIf='newTweet.image' class='box-image'>
+  <div *ngIf='newTweet["image"]' class='box-image'>
     <ion-img class='fit-parent' src="{{ newTweet.image }}"></ion-img>
   </div>
 </ion-content>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -17,6 +17,8 @@ import { UniAlertService } from './shared/uniAlert.service';
 import { ToastService } from './shared/toast.service';
 import { UsersPage } from 'src/app/pages/users/users.page';
 import { ModalContentPage } from 'src/app/pages/modal-content/modal-content.page';
+
+enableProdMode();
 
 @NgModule({
   declarations: [AppComponent, UnictDatePipe],

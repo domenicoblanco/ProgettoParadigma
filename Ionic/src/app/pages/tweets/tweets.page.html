@@ -25,7 +25,7 @@
           <ion-label>  
             <div class='item-header'>
               <ion-avatar (click)='showStory(getUser(tweet._author._id))'>
-                <ion-img class='profile-image' [src]='getUser(tweet._author._id).image'></ion-img>
+              <ion-img class='profile-image' [src]='(getUser(tweet._author._id)).image'></ion-img>
               </ion-avatar>
               <div style='margin: 0 10px'>
                 <p class="user" [class.me]="canEdit(tweet)">

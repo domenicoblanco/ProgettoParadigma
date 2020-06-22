@@ -1,45 +1,45 @@
 <app-drawer>
-  <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+
+  <div *ngIf='uniLoader.visibility' class="spinnerWrapper">
+    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+  </div>
 
   <div class="avatar__container">
-    <mat-card-header class='box-image'>
-      <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg" /> 
-      <img mat-card-avatar class="profile-img" [src]='this.me.image? this.me.image : "./assets/users/me.png"'>
-    </mat-card-header>
+    <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg" /> 
+    <img mat-card-avatar class="profile-img" [src]='this.me.image? this.me.image : "./assets/users/me.png"'>
   </div>
-  
+
   <mat-card>
-    <mat-list-item>
-      <mat-label position="stacked">Name</mat-label>
-      <input matInput [(ngModel)]="me.name" [readonly]="readOnly">
-    </mat-list-item>
-    <mat-list-item>
-      <mat-label position="stacked">Surname</mat-label>
-      <input matInput [(ngModel)]="me.surname" [readonly]="readOnly">
-    </mat-list-item>
-    <mat-list-item>
-      <mat-label position="stacked">Email</mat-label>
-      <input matInput type="email" [(ngModel)]="me.email" [readonly]="readOnly">
-    </mat-list-item>
+    <mat-card-content class="card-content">
+      <mat-form-field>
+        <mat-label appearance="fill">Name</mat-label>
+        <input matInput name="name" [(ngModel)]="me.name" [readonly]="readOnly">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label appearance="fill">Surname</mat-label>
+        <input matInput name="surname" [(ngModel)]="me.surname" [readonly]="readOnly">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label appearance="fill">Email</mat-label>
+        <input matInput name="email" type="email" [(ngModel)]="me.email" [readonly]="readOnly">
+      </mat-form-field>
+    </mat-card-content>
 
-    <mat-grid-list cols='2'>
-        <button mat-button expand="block" fill="solid" color="secondary" (click)="editAndSave()">
-          <mat-icon>{{readOnly ? 'create' : 'checkmark'}}</mat-icon> 
-          {{ readOnly ? 'Edit' : 'Save' }} profile
-        </button>
+    <mat-card-footer class="card-footer">
+      <button mat-button class="full-w" fill="solid" color="primary" (click)="editAndSave()">
+        <mat-icon>{{readOnly ? 'create' : 'checkmark'}}</mat-icon> 
+        {{ readOnly ? 'Edit' : 'Save' }} profile
+      </button>
 
-        <button mat-button expand="block" fill="solid" color="danger" (click)="openDialog()">
-          <mat-icon name="close-circle"></mat-icon> 
-          Delete profile
-        </button>
-
-    </mat-grid-list>
+      <button mat-button class="full-w" fill="solid" color="error" (click)="openDialog()">
+        <mat-icon name="close-circle"></mat-icon> 
+        Delete profile
+      </button>
+    </mat-card-footer>
 
   </mat-card>
 
-  <mat-toolbar>
-    <div class="button-logout">
-      <button mat-button fill='solid' color="tertiary" (click)="logout()">Logout</button>
-    </div>
-  </mat-toolbar>
+  <div class="logout-wrapper">
+      <button mat-button fill='solid' class="logout-button" (click)="logout()">Logout</button>
+  </div>
 </app-drawer>

@@ -1,3 +1,8 @@
+<div *ngIf='uniLoader.visibility' class="spinnerWrapper">
+  <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+</div>
+
+
 <mat-toolbar role='heading'>
   <mat-toolbar>
     <div>
@@ -10,8 +15,6 @@
 </mat-toolbar>
   
 <div class="form__container">
-
-  <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
 
   <form class='form'>
     <mat-form-field>

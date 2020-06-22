@@ -41,3 +41,9 @@ mat-card-footer {
     display: flex;
     justify-content: center;
 }
+
+.card-action-buttons {
+    display: inline-flex;
+    margin-left: auto !important;
+    z-index: 0;
+}

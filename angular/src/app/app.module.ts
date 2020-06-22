@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component'
@@ -30,6 +30,8 @@ import { DrawerComponent } from './drawer/drawer.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { UnictDatePipe } from './pipes/unict-date.pipe';
 import { DeleteProfileComponent } from './pages/delete-profile/delete-profile.component';
+
+enableProdMode();
 
 @NgModule({
   declarations: [
@@ -62,7 +64,7 @@ import { DeleteProfileComponent } from './pages/delete-profile/delete-profile.co
     FormsModule,
     MatDialogModule,
     MatButtonModule,
-    LayoutModule,
+    LayoutModule
   ],
   providers: [
     UniLoaderService,

@@ -1,8 +1,13 @@
+<div *ngIf='uniLoader.visibility' class="spinnerWrapper">
+  <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+</div>
+
+
 <mat-card style="width: 45vw; margin: -24px;">
   <mat-card-header style="display: unset!important;">
     <div class="card-header">
       <mat-card-title class='title'>{{ isStory ? 'New Story' : editMode ? "Edit tweet" : 'New Tweet' }}</mat-card-title>
-      <div style="margin-left: auto!important; z-index: 0">
+      <div class="card-action-buttons">
         <button mat-button (click)="fileinput.click()" color="dark" class="align-icons">
           <mat-icon>attach_file</mat-icon> 
           <input #fileinput class='image-uploader' type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg">
@@ -15,8 +20,6 @@
   </mat-card-header>
 
   <mat-card-content>
-    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
-
     <mat-form-field appearance="outline">
       <mat-label>{{ editMode ? 'Edit' : 'Write' }} your message</mat-label>
 

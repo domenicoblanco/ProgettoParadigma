@@ -31,6 +31,7 @@ export class TweetsPage implements OnInit, AfterViewChecked {
 
   ngOnInit() { 
     this.getTweets();
+    
     this.user.getUsers();
   }
 
@@ -55,7 +56,10 @@ export class TweetsPage implements OnInit, AfterViewChecked {
     modal.afterClosed().toPromise().then(async () => {
 
       // Aggiorno la mia lista di tweet, per importare le ultime modifiche apportate dall'utente
-      if(refresh) await this.getTweets();
+      if(refresh){
+        await this.getTweets();
+        
+      }
 
       // La chiamata è andata a buon fine, dunque rimuovo il loader
       this.uniLoader.dismiss();
@@ -78,8 +82,6 @@ export class TweetsPage implements OnInit, AfterViewChecked {
 
       // Popolo il mio array di oggetti 'Tweet' con quanto restituito dalla chiamata API
       this.tweets = await this.tweetsService.getTweets();
-
-      console.log(this.tweets);
 
       // La chiamata è andata a buon fine, dunque rimuovo il loader
       await this.uniLoader.dismiss();
@@ -118,6 +120,7 @@ export class TweetsPage implements OnInit, AfterViewChecked {
 
       // Aggiorno la mia lista di tweet, per importare le ultime modifiche apportate dall'utente
       await this.getTweets();
+      
 
 
       // La chiamata è andata a buon fine, dunque rimuovo il loader
@@ -138,6 +141,7 @@ export class TweetsPage implements OnInit, AfterViewChecked {
 
       // Riaggiorno la mia lista di tweets
       await this.getTweets();
+      
 
       // Mostro un toast di conferma
       await this.toastService.show({

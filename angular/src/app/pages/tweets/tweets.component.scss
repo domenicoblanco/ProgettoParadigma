@@ -6,6 +6,15 @@
 
 mat-list-item {
     margin: 8px 0px;
+    margin-right: -40px;
+}
+
+mat-list-content {
+    margin-top: -6px;
+}
+
+.mat-list-base {
+    padding-top: 0px
 }
 
 .box-content {
@@ -46,17 +55,40 @@ mat-card-content{
 .carousel {
     flex-direction: row;
     display: inline-flex;
+    z-index: 2;
+    margin-top: -52px;
+    position: absolute;
+    margin-left: 140px;
+    width: -webkit-fill-available;
+}
+
+.scrollCarousel::-webkit-scrollbar {
+    display: none;
+}
+
+@media only screen and (max-width: 580px) {
+    .carousel {
+        margin-top: -49px;
+    }
+}
+
+.white {
+    color: white;
 }
 
 .storiesList {
     display: inline-flex;
-    overflow-x: scroll;
 }
 
 .story-image {
     max-width: 64px;
+    margin-top: -24px;
 }
 
 .storycontainer {
-    overflow-y: hidden;
+}
+
+.scrollCarousel {
+    display: flex;
+    overflow-x: scroll;
 }

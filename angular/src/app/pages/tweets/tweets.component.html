@@ -1,21 +1,25 @@
+<div *ngIf='uniLoader.visibility' class="spinnerWrapper">
+    <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+</div>
+
 <app-drawer>           
     <div class="carousel">
-        <button (click)="createStory()">
-          <mat-icon size='large' >add</mat-icon> 
+        <button mat-icon-button (click)="createStory()">
+          <mat-icon class="white">add</mat-icon> 
         </button>
-        <mat-list class="storiesList"> 
-            <div class="storycontainer" *ngFor="let tweet of tweets">
-                <mat-list-item *ngIf='tweet.isStory'>
-                    <mat-card-header (click)='showStory(tweet)'> 
-                        <img mat-card-image class='story-image' [src]='getUser(tweet._author._id).image'>
-                    </mat-card-header>
-                </mat-list-item>    
-            </div>
-        </mat-list>
+        <div class="scrollCarousel">
+            <mat-list class="storiesList"> 
+                <div class="storycontainer" *ngFor="let tweet of tweets">
+                    <mat-list-item *ngIf='tweet.isStory'>
+                        <mat-card-header (click)='showStory(tweet)'> 
+                            <img mat-card-avatar class='story-image' [src]='getUser(tweet._author._id).image'>
+                        </mat-card-header>
+                    </mat-list-item>    
+                </div>
+            </mat-list>
+        </div>
     </div>
     <div class="box-content">
-        <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
-
         <div class='container'>
             <mat-list-item style='width: 450px' role='list-item' lines='none'  *ngFor="let tweet of tweets" >
                 <mat-card style='margin: 8px 0px' *ngIf='!tweet.isStory'>  

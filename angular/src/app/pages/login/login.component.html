@@ -2,10 +2,12 @@
     <mat-toolbar class='title'>Progetto Paradigma</mat-toolbar>  
 </mat-toolbar>
 
-<div class="form__container">
-
+<div *ngIf='uniLoader.visibility' class="spinnerWrapper">
   <mat-spinner [diameter]='50' *ngIf='uniLoader.visibility' mode='indeterminate'></mat-spinner>
+</div>
 
+
+<div class="form__container">
   <form class='form'>
     <mat-form-field>
       <mat-label position="floating">Email</mat-label>
