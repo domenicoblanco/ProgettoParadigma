@@ -20,38 +20,38 @@
 
 <ion-content class='box-content'>
   <div class='container'>
-    <ion-list class='list-post' *ngFor="let tweet of tweets">
-        <ion-item lines='none' class='box-item' *ngIf='!tweet.isStory'>
-          <ion-label>  
-            <div class='item-header'>
-              <ion-avatar (click)='showStory(getUser(tweet._author._id))'>
-              <ion-img class='profile-image' [src]='(getUser(tweet._author._id)).image'></ion-img>
-              </ion-avatar>
-              <div style='margin: 0 10px'>
-                <p class="user" [class.me]="canEdit(tweet)">
-                  {{ getAuthor(tweet) }} 
-                  <ion-icon *ngIf="canEdit(tweet)" name="heart" color="danger-tint"></ion-icon> 
-                </p>
+    <ion-list class='list-post' *ngFor="let tweet of filterStories()">
+      <ion-item lines='none' class='box-item'>
+        <ion-label>  
+          <div class='item-header'>
+            <ion-avatar (click)='showStory(getUser(tweet._author._id))'>
+            <ion-img class='profile-image' [src]='(getUser(tweet._author._id)).image'></ion-img>
+            </ion-avatar>
+            <div style='margin: 0 10px'>
+              <p class="user" [class.me]="canEdit(tweet)">
+                {{ getAuthor(tweet) }} 
+                <ion-icon *ngIf="canEdit(tweet)" name="heart" color="danger-tint"></ion-icon> 
+              </p>
 
-                <ion-note>{{ tweet.createdAt | unictDate: 1 }}</ion-note>  
-              </div>
-              <div class='editOrDeletePost'>
-                <ion-buttons *ngIf='canEdit(tweet)'>
-                  <ion-button color="secondary" (click)="createOrEditTweet(tweet)">
-                    <ion-icon slot="icon-only" name="create"></ion-icon>
-                  </ion-button>
-                  <ion-button color="danger" (click)="deleteTweet(tweet)">
-                    <ion-icon slot="icon-only" name="trash"></ion-icon>  
-                  </ion-button>
-                </ion-buttons>
-              </div>
+              <ion-note>{{ tweet.createdAt | unictDate: 1 }}</ion-note>  
             </div>
-            <h2 class='spacewrap'>{{tweet.tweet}}</h2>
-            <div *ngIf='tweet.image' class='box-image'>
-              <ion-img [src]="tweet.image"></ion-img>
+            <div class='editOrDeletePost'>
+              <ion-buttons *ngIf='canEdit(tweet)'>
+                <ion-button color="secondary" (click)="createOrEditTweet(tweet)">
+                  <ion-icon slot="icon-only" name="create"></ion-icon>
+                </ion-button>
+                <ion-button color="danger" (click)="deleteTweet(tweet)">
+                  <ion-icon slot="icon-only" name="trash"></ion-icon>  
+                </ion-button>
+              </ion-buttons>
             </div>
-          </ion-label> 
-        </ion-item>
+          </div>
+          <h2 class='spacewrap'>{{tweet.tweet}}</h2>
+          <div *ngIf='tweet.image' class='box-image'>
+            <ion-img [src]="tweet.image"></ion-img>
+          </div>
+        </ion-label> 
+      </ion-item>
     </ion-list>
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed"> 

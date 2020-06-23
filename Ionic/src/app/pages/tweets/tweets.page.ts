@@ -189,4 +189,8 @@ export class TweetsPage implements OnInit {
 
   }
 
+  filterStories() {
+    return this.tweets.filter(({isStory}) => !isStory)
+  }
+
 }
