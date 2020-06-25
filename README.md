@@ -1,106 +1,81 @@
-**STORY 1:** _Creation and management of stories_
-**AS**
-User
-**_I WANT TO_**
-Create stories or images and/or texts
-**_SO THAT_**
-Share all the moments of your day
-**_Acceptance Criteria_**
-1) Upload stories
 
-- 2) Duration of 2 minutes^
-- 3) Possibility to be able to view them again^
+## FASI PROGETTO
 
-**_STORY 2_** **:** _Publication of tweets_
-**_AS_**
-User
-**_WANT_**
-Being able to publish one or more tweets with the possibility of
-using only the text or attaching together with the text
-**_SO THAT_**
-Publish content such as images or texts for informational
-purposes or for pleasure
+È stato sviluppato un social sulla base di una piattaforma fornita dal team di Paradigma. Inizialmente sono stati assegnati i ruoli all’interno di una Scrum Planning. Successivamente sono state definite delle Stories per organizzare il lavoro da svolgere, il tutto supervisionato dallo Scrum Master, in modo tale da raggiungere gli sprint goal in ciascun punto. Le fasi implementative sono state suddivise in quattro sprint:
 
+ 1. Configurazione database e back-end all’interno di un server condiviso in modo tale da poter sfruttare lo stesso DB su piattaforme diverse (durata: 1 settimana).
+ 2. Aggiornamento della piattaforma basata su Ionic secondo gli stili discussi in precedenza ed implementazione delle Stories, con presenza di bug minori (durata: 8 giorni).
+ 3. Stesura applicazione sul framework Angular con sviluppo di nuove features definite in precedenza nelle varie Stories, con presenza di bug minori (durata: 4 giorni).
+4. Risoluzione bug presenti nelle due versioni (durata: 2 giorni)
 
-**_Acceptance Criteria_**
-1) 280 letters limit
-2) Optional images
+Durante lo sviluppo delle varie Stories nei diversi sprint, sono stati effettuati Daily
+Scrum e Sprint Review, in modo tale da revisionare il lavoro svolto.
 
-**STORY 3:** _Profile photo customization_
-**_AS_**
-User
-**_WANT_**
-Be able to upload your profile photo
-**_SO THAT_**
-The user can now upload any photo
-**_Acceptance Criteria_**
-1) Freedom to select a profile photo of your choice
+### Stories
 
-**_STORY 4_** **:** _Responsive part arrangement and arrangement of
-elements_
-**_AS_**
-User
-**_WANT_**
-Interface suitable for the device being used
-**_SO THAT_**
-Best visual appearance
-
-
-**_Acceptance Criteria_**
-1) Screen adapted to any desktop, smartphone, tablets and
-more...
-2) A better arrangement of the elements
-
-**_STORY 5_** **:** _Rimozione tweet dal DB per utente eliminato_
-**_AS_**
-Developer
-**_WANT_**
-Keep my DB clean by deleting old users’ tweets
-**_SO THAT_**
-Removal of the user and his tweets
-**_Acceptance Criteria_**
-1) Certainty that the data is deleted
-
-**_STORY 6_** **:** _Ingrandimento tweets per visualizzare profilo con
-nome utente_
-**_AS_**
-User
-
-
-## WANT
-
-Integrated functionality to be able to enlarge one or more
-tweets, with the possibility of being able to view the user’s
-name and profile photo
-**_SO THAT_**
-More information about the user
-**_Acceptance Criteria
-1)_** Modal creation to show the larger profile picture and
-zoomed tweets
-
-**_STORY 7_** **:** _Counting tweets characters and stories_
-**_AS_**
-User
-**_WANT_**
-Maximum number of characters and number of characters
-already used
-**_SO THAT_**
-Adjust how many characters are missing and how long you can
-write
-**_Acceptance Criteria_**
-1) It allows you to see how many characters are missing up to
-the maximum and how many can be used
+1. Creazione e gestione delle stories
+    - **AS** Utente
+    - **I WANT TO** Creare storie con immagini e/o testi
+    - **SO THAT** Condividere i momenti della propria giornata
+    - Acceptance Criteria:
+       ▪ Caricare Storie
+       ▪ Durata di 2 minuti
+       ▪ Possibilità di poterle visualizzare nuovamente
+2. Pubblicazione tweet
+    - **AS** Utente
+    - **I WANT TO** Pubblicare uno o più tweet con la possibilità di allegare immagini congiunte al testo
+    - **SO THAT** Condividere contenuti con testi e immagini a scopo
+       informativo o per diletto
+    - Acceptance Criteria
+		▪ Limite di 280 caratteri
+		▪ Immagini facoltative
+3. Personalizzazione foto del profilo
+    - **AS** Utente
+    - **I WANT TO** Personalizzare la propria foto del profilo
+    - **SO THAT** Possa essere riconosciuto da altri utenti
+    - Acceptance Criteria
+       ▪ Libertà di selezionare una foto del profilo a scelta
+4. Sistemazione stile interfaccia
+    - **AS** Utente
+    - **I WANT TO** Un’interfaccia adeguata al dispositivo in uso
+    - **SO THAT** Migliorare l’aspetto estetico a livello visivo per una maggiore usabilità
+    - Acceptance Criteria
+       ▪ Schermo adattato ad un qualsiasi desktop, agli smartphone, tablet ed altri dispositivi
+       ▪ Un miglior layout della pagina
+5. Rimozione tweet dell’utente eliminato dal DB
+    - **AS** Developer
+    - **I WANT TO** Ottimizzare il DB eliminando i tweet degli utenti
+       rimossi
+    - **SO THAT** Rimozione dell’utente e dei suoi tweet
+    - Acceptance Criteria
+       ▪ Certezza che i dati siano stati eliminati
+6. Creazione popup per la visualizzazione di un profilo utente
+    - **AS** Utente
+    - **I WANT TO** Riconoscere un utente rapidamente
+    - **SO THAT** Possa identificare l’autore con uno zoom sull’immagine del profilo
+    - Acceptance Criteria
+       ▪ Creazione modale per mostrare l’immagine del profilo zoomata
+7. Conteggio caratteri tweet e storie
+    - **AS** Utente
+    - **I WANT TO** Conoscere il numero corrente di caratteri inseriti
+    - **SO THAT** Regolarsi su quanti caratteri mancano al limite consentito
+    - Acceptance Criteria
+       ▪ Contatore caratteri correnti rispetto alla lunghezza massima
+          prefissata
+8. Visualizzazione storie
+    - **AS** Utente
+    - **I WANT TO** Visualizzare il contenuto delle storie presenti
+    - **SO THAT** Aggiornarsi sulle attività quotidiane di altri utenti
+    - Acceptance Criteria
+       ▪ Creazione modale per la visualizzazione del contenuto delle storie
 
 
-**_STORY 8_** **:** _Visualization stories_
-**AS**
-User
-**_WANT_**
-View the content of previous stories
-**_SO THAT_**
-Keep up to view other users’ daily activities
-**_Acceptance Criteria_**
-1) Modal creation for viewing the content of stories
-2) Stories disappear after 2 minutes
+### Architettura
+
+- Database No-SQL MongoDB Community Edition hostato su container Docker
+- Back-end Node Express hostato su container Docker
+- Front-end:
+    o Ionic 4
+    o Angular 9
 
 
