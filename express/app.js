@@ -15,7 +15,7 @@ const tweetRouter = require('./routes/tweets');
 
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@'+ process.env.DB_HOST + '/' + process.env.DB_NAME);
+mongoose.connect('mongodb://Paradigma:Paradigma@localhost/unict-innovation');
 
 const db = mongoose.connection;
 db.on('error', function() {
