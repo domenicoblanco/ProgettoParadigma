@@ -2,7 +2,7 @@
   <mat-drawer #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       mode="push">
-    <mat-toolbar>
+    <mat-toolbar class="drawer-username">
       Welcome back {{user.name}}
     </mat-toolbar>
     <div class='profile-container'>
