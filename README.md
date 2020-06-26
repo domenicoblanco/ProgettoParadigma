@@ -17,7 +17,7 @@ Scrum e Sprint Review, in modo tale da revisionare il lavoro svolto.
     - **AS** Utente
     - **I WANT TO** Creare storie con immagini e/o testi
     - **SO THAT** Condividere i momenti della propria giornata
-    - Acceptance Criteria:
+    - Acceptance Criteria
        ▪ Caricare Storie
        ▪ Durata di 2 minuti
        ▪ Possibilità di poterle visualizzare nuovamente
