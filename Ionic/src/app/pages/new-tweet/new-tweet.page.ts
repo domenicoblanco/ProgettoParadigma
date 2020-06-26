@@ -100,7 +100,6 @@ export class NewTweetPage implements OnInit {
       } else {
 
         this.newTweet.isStory = this.isStory;
-
         // Chiamo la createTweet se l'utente sta creando un nuovo tweet
         await this.tweetsService.createTweet(this.newTweet);
       }

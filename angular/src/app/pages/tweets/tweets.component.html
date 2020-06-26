@@ -32,7 +32,7 @@
                             <mat-icon class='icon-user' *ngIf="canEdit(tweet)" color="danger-tint">sentiment_satisfied_alt</mat-icon> 
                             </p> 
                         </mat-card-title>
-                        <mat-card-subtitle>{{ tweet.createdAt | unictDate:1}}</mat-card-subtitle> 
+                        <mat-card-subtitle>{{ parseDate(tweet.createdAt) }}</mat-card-subtitle> 
                         <div class='editOrDeletePost'*ngIf='canEdit(tweet)'>
                             <button mat-button (click)="createOrEditTweet(tweet)">
                                 <mat-icon color="primary">create</mat-icon>

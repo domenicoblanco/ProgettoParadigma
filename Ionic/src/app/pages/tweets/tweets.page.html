@@ -33,7 +33,7 @@
                 <ion-icon *ngIf="canEdit(tweet)" name="heart" color="danger-tint"></ion-icon> 
               </p>
 
-              <ion-note>{{ tweet.createdAt | unictDate: 1 }}</ion-note>  
+              <ion-note>{{ parseDate(tweet.createdAt) }}</ion-note>  
             </div>
             <div class='editOrDeletePost'>
               <ion-buttons *ngIf='canEdit(tweet)'>

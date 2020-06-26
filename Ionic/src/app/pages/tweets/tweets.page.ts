@@ -133,6 +133,10 @@ export class TweetsPage implements OnInit {
 
   }
 
+  parseDate(s: string) {
+    return s.split('T')[0] + ' @ ' + s.split('T')[1].split('.')[0]
+  }
+
   async deleteTweet(tweet: Tweet) {
 
     try {

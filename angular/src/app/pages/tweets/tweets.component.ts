@@ -47,6 +47,10 @@ export class TweetsPage implements OnInit, AfterViewChecked {
     return this.auth.me
   }
 
+  parseDate(s: string) {
+    return s.split('T')[0] + ' @ ' + s.split('T')[1].split('.')[0]
+  }
+
   async showModal(component, prop: boolean | Tweet | User, refresh = false) {
     const modal = this.dialog.open(component, {
       data: {
